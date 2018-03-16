@@ -25,9 +25,9 @@ O sistema terá o objetivo de gerenciar todos os processos internos do Moto Club
 Git é um controle de versão distribuído e um sistema de gerenciamento de código fonte com enfase em velocidade. Inicialmente ele foi desenhado e desenvolvido pelo Linus Torvalds para o desenvolvimento do kernel do Linux, desde então ele tem se popularizado no mundo opensource e é utilizado em milhares de projetos.
 
 Para instalar o Git no Ubuntu basta executar o comando abaixo:
-
+``` 
  $ sudo apt-get install git
-
+``` 
 # Configurando sua identidade no Git
 
 A primeira coisa a se fazer logo após a instalação do Git é configurar seu nome de usuário e endereço de e-mail. Isto é importante pois cada commit no Git usa esta informação e ela é imutável a partir daí.
@@ -44,9 +44,9 @@ Para se conectar à um servidor Git de forma segura você precisa gerar uma SSH 
 
 ATENÇÃO: Caso você já possua uma SSH Key configurada, você não precisa regera-la, mas somente registra-la no servidor Git.
 Para registrar sua chave você precisa executar os comandos abaixo
-
+``` 
  $ ssh-keygen -t rsa -C "your_email@example.com"
-
+``` 
 Tecle <ENTER> para todas as perguntas do comando acima - são 3 perguntas.
 Mais informações sobre como gerar SSH Keys? Veja em "Generating SSH Keys".
 
@@ -55,19 +55,19 @@ Caso precise de mais detalhes sobre o Git, como utiliza-lo e seus comandos bási
 # Instalar o Maven
 
 No MAC
-
+``` 
  $ brew install maven
-
+``` 
 No Linux
-
+``` 
  $ sudo apt-get --no install-recomends install maven
-   
+``` 
 O argumento --no-install-recommends evita que o apt-get instale dependências desnecessárias, entre elas o OpenJDK 6 - pois utilizamos o OpenJDK 7.
 
 Para verificar a versao correta:
-
+``` 
  $ mvn --version
- 
+```  
 Vai aparecer algo como:
 
 Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-24T16:49:05-03:00)
