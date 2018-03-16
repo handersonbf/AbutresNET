@@ -18,9 +18,10 @@ public class Sede implements Serializable{
 	@GeneratedValue
 	private Long id;
 	private String nome;
-	private String diretor;
-	private String subDiretor;
+	private Membro diretor;
+	private Membro subDiretor;
 	private String endereco;
+	private Sede sedeMae;
 	
 	public Long getId() {
 		return id;
@@ -34,16 +35,16 @@ public class Sede implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getDiretor() {
+	public Membro getDiretor() {
 		return diretor;
 	}
-	public void setDiretor(String diretor) {
+	public void setDiretor(Membro diretor) {
 		this.diretor = diretor;
 	}
-	public String getSubDiretor() {
+	public Membro getSubDiretor() {
 		return subDiretor;
 	}
-	public void setSubDiretor(String subDiretor) {
+	public void setSubDiretor(Membro subDiretor) {
 		this.subDiretor = subDiretor;
 	}
 	public String getEndereco() {
@@ -51,6 +52,12 @@ public class Sede implements Serializable{
 	}
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	public Sede getSedeMae() {
+		return sedeMae;
+	}
+	public void setSedeMae(Sede sedeMae) {
+		this.sedeMae = sedeMae;
 	}
 	
 	
