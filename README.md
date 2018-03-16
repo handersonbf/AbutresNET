@@ -1,2 +1,2 @@
 # AbutresNET
-Sistema de Gerenciamento do Comando e Diretoria Abutres MC
+Sistema Gerenciamento do Abutres Moto Clube Brasil
