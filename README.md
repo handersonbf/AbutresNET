@@ -31,7 +31,7 @@ Para configurar o projeto siga os passos:
 
 1. Baixe o projeto do GitHub, basta clona-lo:
 ``` 
-$ git clone git@github.com:triadworks/ITCVertebral.git
+$ git clone git@github.com:triadworks/AbutresNET.git
 ``` 
 2. Importe o projeto pelo Eclipse como um projeto Maven através da opção:
 ``` 
