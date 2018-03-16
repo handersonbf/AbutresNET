@@ -5,76 +5,46 @@ Sistema Gerenciamento do Abutres Moto Clube Brasil
 O sistema terá o objetivo de gerenciar todos os processos internos do Moto Clube e será destinado inicialmente somente para o Comando maior e para a Diretoria (Diretores e Sub-Diretores) do Moto Clube Abutres em todo o mundo.
 
 ## Funcionalidades
- * Endereços de Subsedes
- * Contatos de Diretorias
- * Diretrizes
- * Normas
- * Manuais
- * Comunicados e ciência
- * Imagens oficiais
- * Solicitações
- * Cores e upload de comprovante
- * Transferencias, etc
- * Interação em grupo (Bate papo)
+- Sedes:
+  - Cadastro de sedes e subsedes com seus endereços
+- Membros:
+  - Cadastro de membros: Neste primeiro momento apenas membros que possuam o cargo de SubDiretor para cima, deve conter os contatos do membro.
+- Mídias:
+  - Cadastro de mídias em PDF ou JPG
+    - Diretrizes
+    - Normas
+    - Manuais
+    - Imagens oficiais
+- Comunicados e ciência
+- Outras funcionalidades futuras:
+  - Solicitações
+  - Cores e upload de comprovante
+  - Transferencias, etc
+  - Interação em grupo (Bate papo)
  
- 
- ## Configurando ambiente
- 
- ## Instalando Git
+## Ambiente de desenvolvimento
+O ambiente de desevolvimento do projeto é configurado através da ferramenta Maven. Ela se encarregará de baixar todas as dependências (libs) e configurar o projeto no Eclipse.
 
-Git é um controle de versão distribuído e um sistema de gerenciamento de código fonte com enfase em velocidade. Inicialmente ele foi desenhado e desenvolvido pelo Linus Torvalds para o desenvolvimento do kernel do Linux, desde então ele tem se popularizado no mundo opensource e é utilizado em milhares de projetos.
+**ATENÇÃO:** Configure o ambiente básico de desenvolvimento, como JDK-8, Git etc.
 
-Para instalar o Git no Ubuntu basta executar o comando abaixo:
-``` 
- $ sudo apt-get install git
-``` 
-# Configurando sua identidade no Git
+Para configurar o projeto siga os passos:
 
-A primeira coisa a se fazer logo após a instalação do Git é configurar seu nome de usuário e endereço de e-mail. Isto é importante pois cada commit no Git usa esta informação e ela é imutável a partir daí.
+1. Baixe o projeto do GitHub, basta clona-lo:
+``` 
+$ git clone git@github.com:triadworks/ITCVertebral.git
+``` 
+2. Importe o projeto pelo Eclipse como um projeto Maven através da opção:
+``` 
+File->Existing Project Maven
+``` 
+Os arquivos .project, .classpath e .settings serão criados. Pode demorar um pouco ao executar este comando pela primeira vez, pois o Maven precisará baixar todas as dependências do projeto.
 
-Se você não fornecer estas informações, o Git utilizará as informações locais da sua máquina - o que normalmente não é o que você quer.
+3. **Pendente** Crie os respectivos banco de dados no MySQL com o encoding utf8: abutres_net
+4. **Pendente** Rode as migrations para gerar o schema de ambos os bancos. Para isso, faça:
+5. **Pendente** Rode a bateria de testes. Para isso, faça:
 
-Execute os comandos abaixo para configurar seu usuário e e-mail:
-``` 
- $ git config --global user.name "Your Name Here"
- $ git config --global user.email "your_email@example.com"
-```
-# Gerando sua SSH Key
-Para se conectar à um servidor Git de forma segura você precisa gerar uma SSH Key (chave pública e privada). Esta chave deverá ser registrada no servidor Git para que seja possível ter acesso aos repositórios dos projetos.
+Pronto! Se todos os testes passaram com "BUILD SUCCESSFUL", seu ambiente está configurado.
 
-ATENÇÃO: Caso você já possua uma SSH Key configurada, você não precisa regera-la, mas somente registra-la no servidor Git.
-Para registrar sua chave você precisa executar os comandos abaixo
-``` 
- $ ssh-keygen -t rsa -C "your_email@example.com"
-``` 
-Tecle <ENTER> para todas as perguntas do comando acima - são 3 perguntas.
-Mais informações sobre como gerar SSH Keys? Veja em "Generating SSH Keys".
+A aplicação já está configurada no Eclipse e pronta para desenvolvimento. Faça o deploy da aplicação executando o método ``main`` da classe ```AbutresNetApplication.java``` e acesse pelo browser.
 
-Caso precise de mais detalhes sobre o Git, como utiliza-lo e seus comandos básicos, por favor, leia este guia prático e sem complicação.
-
-# Instalar o Maven
-
-No MAC
-``` 
- $ brew install maven
-``` 
-No Linux
-``` 
- $ sudo apt-get --no install-recomends install maven
-``` 
-O argumento --no-install-recommends evita que o apt-get instale dependências desnecessárias, entre elas o OpenJDK 6 - pois utilizamos o OpenJDK 7.
-
-Para verificar a versao correta:
-``` 
- $ mvn --version
-```  
-Vai aparecer algo como:
-``` 
-Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-24T16:49:05-03:00)
-Maven home: /usr/local/Cellar/maven/3.5.3/libexec
-Java version: 1.8.0_161, vendor: Oracle Corporation
-Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre
-Default locale: pt_BR, platform encoding: UTF-8
-OS name: "mac os x", version: "10.12.6", arch: "x86_64", family: "mac" 
-``` 
- 
+Qualquer dúvida ou problema, é só falar.
