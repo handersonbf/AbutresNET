@@ -35,10 +35,10 @@ A primeira coisa a se fazer logo após a instalação do Git é configurar seu n
 Se você não fornecer estas informações, o Git utilizará as informações locais da sua máquina - o que normalmente não é o que você quer.
 
 Execute os comandos abaixo para configurar seu usuário e e-mail:
- 
+``` 
  $ git config --global user.name "Your Name Here"
  $ git config --global user.email "your_email@example.com"
-
+```
 # Gerando sua SSH Key
 Para se conectar à um servidor Git de forma segura você precisa gerar uma SSH Key (chave pública e privada). Esta chave deverá ser registrada no servidor Git para que seja possível ter acesso aos repositórios dos projetos.
 
