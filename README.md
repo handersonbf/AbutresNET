@@ -39,12 +39,14 @@ File->Existing Project Maven
 ``` 
 Os arquivos .project, .classpath e .settings serão criados. Pode demorar um pouco ao executar este comando pela primeira vez, pois o Maven precisará baixar todas as dependências do projeto.
 
-3. **Pendente** Crie os respectivos banco de dados no MySQL com o encoding utf8: abutres_net
-4. **Pendente** Rode as migrations para gerar o schema de ambos os bancos. Para isso, faça:
-5. **Pendente** Rode a bateria de testes. Para isso, faça:
+3. **Pendente** ~~Crie os respectivos banco de dados no MySQL com o encoding utf8: abutres_net~~
+4. **Pendente** ~~Rode as migrations para gerar o schema de ambos os bancos. Para isso, faça:~~
+5. **Pendente** ~~Rode a bateria de testes. Para isso, faça:~~
 
-Pronto! Se todos os testes passaram com "BUILD SUCCESSFUL", seu ambiente está configurado.
+~~Pronto! Se todos os testes passaram com "BUILD SUCCESSFUL", seu ambiente está configurado.~~
 
 A aplicação já está configurada no Eclipse e pronta para desenvolvimento. Faça o deploy da aplicação executando o método ``main`` da classe ```AbutresNetApplication.java``` e acesse pelo browser.
+
+http://localhost:8080/
 
 Qualquer dúvida ou problema, é só falar.
