@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.abutres.model.Sede;
-import br.com.abutres.repository.Sedes;
+import br.com.abutres.repository.SedesRepository;
 
 @Controller
 @RequestMapping("/sedes")
 public class SedesController {
 	
 	@Autowired
-	private Sedes sedes;
+	private SedesRepository sedes;
 	
 	@GetMapping
 	public ModelAndView listar() {
