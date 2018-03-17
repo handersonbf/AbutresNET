@@ -16,6 +16,6 @@ public class MembrosController {
 	
 	@GetMapping
 	public String index() {
-		return "Teste";
+		return "Teste2";
 	}
 }
