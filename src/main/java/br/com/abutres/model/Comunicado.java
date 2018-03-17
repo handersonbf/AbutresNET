@@ -17,8 +17,11 @@ public class Comunicado implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	private Usuario usuarioAutor;
+	
 	private String assunto;
+	
 	private String mensagem;
 	
 	public Long getId() {

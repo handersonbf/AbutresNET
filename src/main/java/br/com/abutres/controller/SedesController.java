@@ -4,21 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.abutres.model.Sede;
-import br.com.abutres.repository.SedesRepository;
+import br.com.abutres.repository.SedeRepository;
 
 @Controller
-@RequestMapping("/sedes")
 public class SedesController {
 	
 	@Autowired
-	private SedesRepository sedes;
+	private SedeRepository sedes;
 	
-	@GetMapping
-	public ModelAndView listar() {
+	
+	@GetMapping("/sedes")
+	public ModelAndView index() {
 		ModelAndView view = new ModelAndView("ListaSedes");
 		view.addObject("sedes", sedes.findAll());
 		view.addObject(new Sede());
@@ -31,5 +30,20 @@ public class SedesController {
 		return "redirect:/sedes";
 
 	}
+	
+	/*
+	index
 
+	show
+
+	edit
+
+	delete
+
+	create
+
+	save
+
+	update
+*/
 }
