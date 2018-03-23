@@ -42,19 +42,31 @@ O ambiente de desevolvimento do projeto é configurado através da ferramenta Ma
 
 Para configurar o projeto siga os passos:
 
-1. Baixe o projeto do GitHub, basta clona-lo:
+1.Faça o fork do repositorio do projeto:
 ``` 
-$ git clone git@github.com:triadworks/AbutresNET.git
+https://github.com/triadworks/AbutresNET
 ``` 
-2. Importe o projeto pelo Eclipse como um projeto Maven através da opção:
+2. Abra o GitBash(Se for windows) e navegue até a pasta do workspace do seu Eclipse:
 ``` 
-File->Existing Project Maven
+cd C:\Users\<SEU_USUARIO>\eclipse-workspace 
 ``` 
+3. Realize o clone do projeto que está em seu repositorio:
+``` 
+git clone https://github.com/<SEU_USUARIO>/AbutresNET.git
+``` 
+
+Após o clone do projeto, uma pasta do projeto é criada na sua workspace.
+
+4.Abra o seu Eclipse e realize a importação do projeto existente na sua workspace através da opção:
+``` 
+File->Import->Existing Project Maven
+``` 
+
 Os arquivos .project, .classpath e .settings serão criados. Pode demorar um pouco ao executar este comando pela primeira vez, pois o Maven precisará baixar todas as dependências do projeto.
 
-3. **Pendente** ~~Crie os respectivos banco de dados no MySQL com o encoding utf8: abutres_net~~
-4. **Pendente** ~~Rode as migrations para gerar o schema de ambos os bancos. Para isso, faça:~~
-5. **Pendente** ~~Rode a bateria de testes. Para isso, faça:~~
+5. **Pendente** ~~Crie os respectivos banco de dados no MySQL com o encoding utf8: abutres_net~~
+6. **Pendente** ~~Rode as migrations para gerar o schema de ambos os bancos. Para isso, faça:~~
+7. **Pendente** ~~Rode a bateria de testes. Para isso, faça:~~
 
 ~~Pronto! Se todos os testes passaram com "BUILD SUCCESSFUL", seu ambiente está configurado.~~
 Como o projeto está na fase inicial temporariamente o banco de dados utilizado está sendo o ``H2`` ele é um banco de dados em memória e foi escolhido para simplificar o desenvolvimento do nosso projeto, por dois motivos.
