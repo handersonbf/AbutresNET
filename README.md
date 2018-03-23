@@ -23,21 +23,8 @@ O sistema terá o objetivo de gerenciar todos os processos internos do Moto Club
   - Interação em grupo (Bate papo)
  
 ## Ambiente de desenvolvimento
-O ambiente de desevolvimento do projeto é configurado através da ferramenta Maven. Ele se encarregará de baixar todas as dependências (libs) e configurar o projeto no Eclipse.
+O ambiente de desevolvimento do projeto é configurado através da ferramenta Maven. Ela se encarregará de baixar todas as dependências (libs) e configurar o projeto no Eclipse.
 
-- Ferramentas utilizadas:
-  - Spring MVC
-  - Spring IoC
-  - Spring Data JPA
-  - Spring Boot
-  - Thymeleaf
-  - Bootstrap
-  - Maven
-  - Tomcat
-  - JPA e Hibernate
-  - Spring Tool Suite
-  - Spring Boot DevTools
-  
 **ATENÇÃO:** Configure o ambiente básico de desenvolvimento, como JDK-8, Git etc.
 
 Para configurar o projeto siga os passos:
@@ -69,9 +56,6 @@ Os arquivos .project, .classpath e .settings serão criados. Pode demorar um pou
 7. **Pendente** ~~Rode a bateria de testes. Para isso, faça:~~
 
 ~~Pronto! Se todos os testes passaram com "BUILD SUCCESSFUL", seu ambiente está configurado.~~
-Como o projeto está na fase inicial temporariamente o banco de dados utilizado está sendo o ``H2`` ele é um banco de dados em memória e foi escolhido para simplificar o desenvolvimento do nosso projeto, por dois motivos.
-  - Primeiro porque ele não precisa ser instalado
-  - E segundo porque não precisamos de configuração alguma para utilizá-lo com Spring Boot 
 
 A aplicação já está configurada no Eclipse e pronta para desenvolvimento. Faça o deploy da aplicação executando o método ``main`` da classe ```AbutresNetApplication.java``` e acesse pelo browser.
 
