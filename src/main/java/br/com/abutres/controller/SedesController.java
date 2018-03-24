@@ -18,7 +18,7 @@ public class SedesController {
 	
 	@GetMapping("/sedes")
 	public ModelAndView index() {
-		ModelAndView view = new ModelAndView("ListaSedes");
+		ModelAndView view = new ModelAndView("views/sedes/lista");
 		view.addObject("sedes", sedes.findAll());
 		view.addObject(new Sede());
 		return view;
