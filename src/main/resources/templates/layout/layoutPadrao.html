@@ -11,26 +11,29 @@
 <!-- CSS  -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet" />
-<link th:href="@{/css/materialize.css}" type="text/css" rel="stylesheet"
+<link th:href="@{/css/materialize.min.css}" type="text/css" rel="stylesheet"
 	media="screen,projection" />
 <link th:href="@{css/style.css}" type="text/css" rel="stylesheet"
 	media="screen,projection" />
 </head>
 <body>
 	<header th:replace="/fragments/header :: header"></header>
-	<div class="container">
-		<div class="section">
-			<!-- Conteudo dinamico -->
-			<div layout:fragment="page_content"></div>
+	<main>
+		<div class="container">
+			<div class="section">
+				<!-- Conteudo dinamico -->
+				<div layout:fragment="page_content"></div>
+			</div>
 		</div>
-	</div>
+	</main>
 	<div th:replace="/fragments/footer :: footer"></div>
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script th:src="@{js/init.js}"></script>
-	<script th:src="@{js/materialize.js}"></script>
+	<script th:src="@{js/materialize.min.js}"></script>
 	<script type="text/javascript">
 		$(".dropdown-trigger").dropdown();
+		       
 	</script>
 	<th:block layout:fragment="scripts"></th:block>
 
