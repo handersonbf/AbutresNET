@@ -24,7 +24,7 @@ public class SedesController {
 		return view;
 	}
 	
-	@PostMapping
+	@PostMapping("/sedes")
 	public String salvar(Sede sede) {
 		this.sedes.save(sede);
 		return "redirect:/sedes";
