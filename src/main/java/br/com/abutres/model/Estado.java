@@ -7,20 +7,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Patente implements Serializable {
+public class Estado implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String nome;
-	private char algorismo;
+	private Pais pais;
 
-	public Patente() {
+	public Estado() {
 
 	}
 
@@ -40,11 +39,11 @@ public class Patente implements Serializable {
 		this.nome = nome;
 	}
 
-	public char getAlgorismo() {
-		return algorismo;
+	public Pais getPais() {
+		return pais;
 	}
 
-	public void setAlgorismo(char algorismo) {
-		this.algorismo = algorismo;
+	public void setPais(Pais pais) {
+		this.pais = pais;
 	}
 }
