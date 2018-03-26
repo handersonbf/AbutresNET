@@ -5,14 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.abutres.repository.MembroRepository;
+import br.com.abutres.repository.MembrosRepository;
 
 @Controller
 @RequestMapping("/membros")
 public class MembrosController {
 	
 	@Autowired
-	private MembroRepository membros;
+	private MembrosRepository membros;
 	
 	@GetMapping
 	public String index() {
