@@ -28,6 +28,5 @@ public class SedesController {
 	public String salvar(Sede sede) {
 		this.sedesService.salvar(sede);
 		return "redirect:/sedes";
-
 	}
 }
