@@ -2,8 +2,8 @@ package br.com.abutres.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.abutres.model.Membro;
+import br.com.abutres.model.Sede;
 
-public interface MembroRepository extends JpaRepository<Membro, Long> {
+public interface SedesRepository extends JpaRepository<Sede, Long> {
 
 }
