@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layoutPadrao}">
+<head>
+<title>Estados</title>
+</head>
+<body>
+	<div layout:fragment="page_content" id="page_content">
+		<div class="row">
+			<div class="col s12 m12">
+				<table class="responsive-table highlight">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Nome</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="estado : ${estados}">
+							<td><a th:href="@{/estados/exibir/{id}(id=${estado.id})}"><span th:text="${estado.id}"></span></a></td>
+							<td><span th:text="${estado.nome}"></span></td>
+							<td>
+								<a th:href="@{/estados/editar/{id}(id=${estado.id})}" class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">mode_edit</i></a>
+								<a th:href="@{/estados/remover/{id}(id=${estado.id})}" class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">delete_forever</i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 m12 right-align">
+				<a th:href="@{/estados/adicionar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Novo</a>			
+			</div>
+		</div>
+	</div>
+</body>
+</html>
