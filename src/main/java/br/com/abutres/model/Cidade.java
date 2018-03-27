@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Cidade implements Serializable {
@@ -17,11 +18,9 @@ public class Cidade implements Serializable {
 	@GeneratedValue
 	private Long id;
 	private String nome;
+	
+	@ManyToOne
 	private Estado estado;
-
-	public Cidade() {
-
-	}
 
 	public Long getId() {
 		return id;

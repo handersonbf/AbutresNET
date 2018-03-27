@@ -1,10 +1,12 @@
 package br.com.abutres.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Pais implements Serializable {
@@ -17,10 +19,9 @@ public class Pais implements Serializable {
 	@GeneratedValue
 	private Long id;
 	private String nome;
-
-	public Pais() {
-
-	}
+	
+	@OneToMany
+	private List<Estado> estados;
 
 	public Long getId() {
 		return id;
@@ -36,5 +37,13 @@ public class Pais implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<Estado> getEstados() {
+		return estados;
+	}
+
+	public void setEstados(List<Estado> estados) {
+		this.estados = estados;
 	}
 }
