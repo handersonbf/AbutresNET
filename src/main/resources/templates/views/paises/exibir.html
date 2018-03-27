@@ -4,18 +4,18 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layoutPadrao}">
 <head>
-<title>Sedes</title>
+<title>Paises</title>
 </head>
 <body>
 	<div layout:fragment="page_content" id="page_content">
-		<div th:each="sede : ${sede}" class="container">		
+		<div th:each="pais : ${pais}" class="container">		
 			<div class="row">
-				<p>Nome: <span th:text=${sede.nome}></span></p>
+				<p>Nome: <span th:text=${pais.nome}></span></p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col s12 m12 right-align">
-				<a th:href="@{/sedes}" class="waves-effect waves-light btn"><i
+				<a th:href="@{/paises}" class="waves-effect waves-light btn"><i
 					class="material-icons left">replay</i>Voltar</a>
 			</div>
 		</div>

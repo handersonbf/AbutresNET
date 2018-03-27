@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.abutres.model.Pais;
-import br.com.abutres.model.Sede;
 import br.com.abutres.repository.PaisesRepository;
 
 @Service
