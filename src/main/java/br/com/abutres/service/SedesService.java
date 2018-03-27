@@ -25,4 +25,8 @@ public class SedesService {
 	public List<Sede> findAll() {
 		return sedes.findAll();
 	}
+	
+	public Sede findById(long id) {
+		return sedes.getOne(id);
+	}
 }
