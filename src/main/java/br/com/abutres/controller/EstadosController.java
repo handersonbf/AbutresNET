@@ -44,4 +44,12 @@ public class EstadosController {
 		return view;
 	}
 	
+	@GetMapping("/estados/editar/{id}")
+	public ModelAndView editar(@PathVariable("id") long id) {
+		Estado estado = estados.findById(id);
+		ModelAndView view = new ModelAndView("views/estados/editar");
+		view.addObject("estado", estado);
+		return view;
+	}
+	
 }
