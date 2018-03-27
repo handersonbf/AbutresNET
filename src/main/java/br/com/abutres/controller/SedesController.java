@@ -18,27 +18,27 @@ public class SedesController {
 	
 	
 	@GetMapping("/sedes")
-	public ModelAndView lista() {
+	public ModelAndView listar() {
 		ModelAndView view = new ModelAndView("views/sedes/lista");
 		view.addObject("sedes", sedesService.findAll());
 		return view;
 	}
 	
-	@GetMapping("/sedes/adiciona")
-	public ModelAndView adiciona() {
+	@GetMapping("/sedes/adicionar")
+	public ModelAndView adicionar() {
 		ModelAndView view = new ModelAndView("views/sedes/adiciona");
 		view.addObject(new Sede());
 		return view;
 	}
 	
-	@PostMapping("/sedes/adiciona")
-	public String adiciona(Sede sede) {
+	@PostMapping("/sedes/adicionar")
+	public String adicionar(Sede sede) {
 		this.sedesService.salvar(sede);
 		return "redirect:/sedes";
 	}
 	
-	@GetMapping("/sedes/exibe/{id}")
-	public ModelAndView exibe(@PathVariable("id") long id) {
+	@GetMapping("/sedes/exibir/{id}")
+	public ModelAndView exibir(@PathVariable("id") long id) {
 		Sede sede = sedesService.findById(id);
 		ModelAndView view = new ModelAndView("views/sedes/exibe");
 		view.addObject("sede", sede);
