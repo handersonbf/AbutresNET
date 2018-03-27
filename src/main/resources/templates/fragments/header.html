@@ -3,17 +3,26 @@
 	xmlns:th="http://www.thymeleaf.org">
 <header th:fragment="header">
 	<div class="navbar-fixed">
+		<ul data-alignment='right' id="dropdown_cadastros" class="dropdown-content blue-text">
+			<li><a href="#" th:href="@{/sedes}">Sedes</a></li>
+			<li class="divider"></li>
+			<li><a href="#!"><i class="material-icons">view_module</i>Cadastros básicos</a></li>
+			<li><a href="#" th:href="@{/paises}">Paises</a></li>
+			<li><a href="#" th:href="@{/estados}">Estados</a></li>	
+			<li><a href="#" th:href="@{/cidades}">Cidades</a></li>			
+		</ul>
+		
+		<ul id="dropdown_mobile_cadastros" class="dropdown-content blue-text">
+			<li><a href="#" th:href="@{/sedes}">Sedes</a></li>
+			<li class="divider"></li>
+			<li><a href="#" th:href="@{/paises}">Paises</a></li>		
+		</ul>
+		
 		<nav class="grey darken-2">
 			<div class="nav-wrapper">
-				<a href="#" data-target="menu-mobile" class="sidenav-trigger">
-					<i class="material-icons">apps</i>
-				</a>
-
+				<a href="#" data-target="menu-mobile" class="sidenav-trigger"><i class="material-icons">apps</i></a>
 				<ul class="left hide-on-med-and-down">
-					<li><a class="dropdown-trigger" href="#!"
-						data-target="dropdown_cadastros"> Cadastros <i
-							class="material-icons right">arrow_drop_down</i>
-					</a></li>
+					<li><a class="dropdown-trigger" href="#!" alignment='right' data-target="dropdown_cadastros" data-beloworigin="true"> Cadastros <i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a href="#">Link01</a></li>
 				</ul>
 
@@ -23,21 +32,19 @@
 								<i class="material-icons right">arrow_drop_down</i>
 						</i>
 					</a></li>
-				</ul>
+				</ul>			
 			</div>
 		</nav>
 	</div>
-
+	<!-- Menu - Mobile -->
 	<ul class="sidenav" id="menu-mobile">
-		<li><a href="#">Cadastros</a></li>
+		<li><a class="dropdown-trigger" href="#!" data-target="dropdown_mobile_cadastros"> Cadastros <i class="material-icons right">arrow_drop_down</i></a></li>
 		<li><a href="#">Logout</a></li>
 	</ul>
+
 	
-	<ul id="dropdown_cadastros" class="dropdown-content blue-text">
-		<li><a href="#" th:href="@{/sedes}">Sedes</a></li>
-		<li class="divider"></li>
-		<li><a href="#" th:href="@{/membros}">Membros</a></li>
-	</ul>
+
+
 	
 	<ul id="dropdown_usuarios" class="dropdown-content">
 		<li><a href="#" th:href="@{/perfil}">Perfil</a></li>
