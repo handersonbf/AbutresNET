@@ -31,11 +31,9 @@
 				</table>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col s12 m12 right-align">
-				<a th:href="@{/sedes/adiciona}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Novo</a>			
-			</div>
-		</div>
+	</div>	
+	<div layout:fragment="page_actions" id="page_actions">
+		<a th:href="@{/sedes/adicionar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Novo</a>			
 	</div>
 	<th:block layout:fragment="scripts">
 		<script type="text/javascript" th:src="@{/js/materialize.js}"></script>
