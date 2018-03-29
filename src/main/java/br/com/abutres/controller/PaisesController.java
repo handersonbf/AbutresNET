@@ -44,4 +44,12 @@ public class PaisesController {
 		return view;
 	}
 	
+	@GetMapping("/paises/editar/{id}")
+	public ModelAndView editar(@PathVariable("id") long id) {
+		Pais pais = paises.findById(id);
+		ModelAndView view = new ModelAndView("views/paises/editar");
+		view.addObject("pais", pais);
+		return view;
+	}
+	
 }
