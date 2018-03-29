@@ -4,31 +4,47 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layoutPadrao}">
 <head>
-<title>Paises</title>
+<title>Estados</title>
 </head>
 <body>
 	<div layout:fragment="page_content" id="page_content">
 		<div class="row">
-			<div class="col s12 m12">
-				<form class="form-inline" method="POST" style="margin: 20px 0"
-					th:object="${estado}" th:action="@{/estados/adicionar}">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Nome"
-							th:field="*{nome}" />
-						<button class="btn waves-effect waves-light" type="submit"
-							name="action">
-							Salvar <i class="material-icons right">save</i>
-						</button>
-					</div>
-				</form>
-			</div>
+			<form class="col s12" method="POST" style="margin: 20px 0"
+				th:object="${estado}" th:action="@{/estados/adicionar}">
+				 <div class="row">
+			        <div class="input-field col s3">
+			       		<select id="pais" class="validate" th:field="*{pais}">
+							<option value="" selected>Escolha uma opção</option>
+							<option th:each="pais : ${paises}" th:value="${pais.id}" th:text="${pais.nome}"></option>
+						</select>
+						<label for="pais">Pais</label>
+			        </div>
+			    </div>
+				<div class="row">
+				  <div class="input-field col s12">
+				    <input id="nome" type="text" class="validate" th:field="*{nome}" >
+				    <label for="nome">Nome</label>
+				  </div>
+				</div>
+				<div class="input-field col s12">
+					<button class="btn waves-effect waves-light" type="submit"
+						name="action">
+						Salvar <i class="material-icons right">save</i>
+					</button>
+				</div>
+			</form>
 		</div>
-		<div class="row">
-			<div class="col s12 m12 right-align">
-				<a th:href="@{/estados}" class="waves-effect waves-light btn"><i
-					class="material-icons left">replay</i>Voltar</a>
-			</div>
-		</div>
+	</div>	
+	<div layout:fragment="page_actions" id="page_actions">
+		<a th:href="@{/estados}" class="waves-effect waves-light btn"><i class="material-icons left">replay</i>Voltar</a>
 	</div>
+		<th:block layout:fragment="scripts">
+		<script type="text/javascript">
+			$(document).ready(function(){
+			    $('select').formSelect();
+			  });
+		</script>
+	</th:block>
 </body>
+
 </html>
