@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+
 
 @Entity
 public class Estado implements Serializable {
@@ -20,9 +24,11 @@ public class Estado implements Serializable {
 	@GeneratedValue
 	private Long id;
 	
+	@NotEmpty
 	private String nome;
 	
 	@ManyToOne
+	@NotNull
 	private Pais pais;
 	
 	@OneToMany
