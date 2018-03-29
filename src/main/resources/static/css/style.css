@@ -21,3 +21,12 @@ body {
   main {
     flex: 1 0 auto;
   }
+  
+.dropdown-header {
+    font-size: 10px;
+    font-weight: 500;
+    opacity: 0.6;
+    display: block;
+    white-space: nowrap;
+    padding: 3px 20px;
+}

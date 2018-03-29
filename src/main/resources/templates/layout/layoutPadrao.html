@@ -20,8 +20,36 @@
 	<header th:replace="/fragments/header :: header"></header>
 	<main>
 		<div class="section">
-			<!-- Conteudo dinamico -->
-			<div layout:fragment="page_content"></div>
+			<div class="row" th:if="${not #strings.isEmpty(mensagem)}">
+				<div class="col s12 m6">				
+				 	<div class="card light-green" >
+				 		<div class="card-content" th:text="${mensagem}" ></div>
+				 	</div>	
+				</div>
+			</div>	
+			<div class="row" th:if="${not #strings.isEmpty(mensagemError)}">	
+				<div class="col s12 m6">
+					<div class="card red lighten-1" >
+				 		<div th:each="detailedError : ${#fields.detailedErrors()}">
+							<span th:text="${detailedError.message}"></span>
+						</div>
+				 	</div>	
+				</div>
+			</div>		
+			</div>
+			<div class="row">
+				<div class="col s12">
+					<div class="card">
+						<div class="card-content">				
+							<!-- Conteudo dinamico -->
+							<div layout:fragment="page_content"></div>
+						</div>	
+						<div class="card-action">
+         					<div layout:fragment="page_actions"></div>
+        				</div>
+					</div>	
+				</div>
+			</div>
 		</div>		
 	</main>
 	<div th:replace="/fragments/footer :: footer"></div>
