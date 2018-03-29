@@ -19,14 +19,14 @@ public class SedesController {
 	
 	@GetMapping("/sedes")
 	public ModelAndView listar() {
-		ModelAndView view = new ModelAndView("views/sedes/lista");
+		ModelAndView view = new ModelAndView("views/sedes/listar");
 		view.addObject("sedes", sedesService.findAll());
 		return view;
 	}
 	
 	@GetMapping("/sedes/adicionar")
 	public ModelAndView adicionar() {
-		ModelAndView view = new ModelAndView("views/sedes/adiciona");
+		ModelAndView view = new ModelAndView("views/sedes/adicionar");
 		view.addObject(new Sede());
 		return view;
 	}
@@ -40,7 +40,7 @@ public class SedesController {
 	@GetMapping("/sedes/exibir/{id}")
 	public ModelAndView exibir(@PathVariable("id") long id) {
 		Sede sede = sedesService.findById(id);
-		ModelAndView view = new ModelAndView("views/sedes/exibe");
+		ModelAndView view = new ModelAndView("views/sedes/exibir");
 		view.addObject("sede", sede);
 		return view;
 	}
