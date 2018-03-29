@@ -15,7 +15,7 @@ public class PaisesController {
 	
 	@Autowired
 	private PaisesService paises;
-	
+		
 	@GetMapping("/paises")
 	public ModelAndView listar() {
 		ModelAndView view = new ModelAndView("views/paises/listar");
@@ -40,6 +40,14 @@ public class PaisesController {
 	public ModelAndView exibir(@PathVariable("id") long id) {
 		Pais pais = paises.findById(id);
 		ModelAndView view = new ModelAndView("views/paises/exibir");
+		view.addObject("pais", pais);
+		return view;
+	}
+	
+	@GetMapping("/paises/editar/{id}")
+	public ModelAndView editar(@PathVariable("id") long id) {
+		Pais pais = paises.findById(id);
+		ModelAndView view = new ModelAndView("views/paises/editar");
 		view.addObject("pais", pais);
 		return view;
 	}
