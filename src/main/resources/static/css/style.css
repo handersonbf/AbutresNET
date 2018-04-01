@@ -5,28 +5,108 @@
  *
  * Made By MaterializeCSS.com
  */
-
 .icon-block {
-  padding: 0 15px;
+	padding: 0 15px;
 }
+
 .icon-block .material-icons {
 	font-size: inherit;
 }
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
 
-  main {
-    flex: 1 0 auto;
-  }
-  
+/*
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
 .dropdown-header {
-    font-size: 10px;
-    font-weight: 500;
-    opacity: 0.6;
-    display: block;
-    white-space: nowrap;
-    padding: 3px 20px;
+	font-size: 10px;
+	font-weight: 500;
+	opacity: 0.6;
+	display: block;
+	white-space: nowrap;
+	padding: 3px 20px;
+}
+
+.header-nav-profile .dropdown .profile-info {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 15px;
+	padding: 0px 20px 0px 10px;
+}
+*/
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+main, footer {
+	padding-left: 250px;
+}
+
+@media only screen and (max-width : 992px) {
+	header, main, footer {
+		padding-left: 0;
+	}
+}
+
+/* Cores - Gradientes*/
+.deep_space {
+	background: #000000; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #434343, #000000);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #434343, #000000);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.midnight_city {
+	background: #232526; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #414345, #232526);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #414345, #232526);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* ---------------------  */
+/* SideNav */
+.logo-wrapper{
+	background:#414345;
+	min-height: 64px;
+}
+
+ul.side-nav .collapsible-header:after {
+  font-family: 'Material Icons';
+  content: "keyboard_arrow_right";
+  color: #9e9e9e;
+  font-size: 18px;
+  position: absolute;
+  right: 16px;
+}
+
+ul.side-nav .collapsible-header.active:after {
+  content: "keyboard_arrow_down";
+}
+/* ---------------------  */
+table.striped>tbody>tr:nth-child(odd) {
+    background-color: #f9f7f7;
+}
+table.striped>tbody>tr:nth-child(odd):hover{
+	 background-color: #f2f2f2;
+}
+
+
+@media only screen and (min-width: 993px){
+	.container {
+	    width: 95%;
+	}
 }
