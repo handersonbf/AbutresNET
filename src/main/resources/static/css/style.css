@@ -104,6 +104,9 @@ table.striped>tbody>tr:nth-child(odd):hover{
 	 background-color: #f2f2f2;
 }
 
+.form_button_actions{
+	display: inline-block;
+}
 
 @media only screen and (min-width: 993px){
 	.container {
