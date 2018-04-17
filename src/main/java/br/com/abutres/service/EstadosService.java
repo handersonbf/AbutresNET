@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.abutres.model.Estado;
-import br.com.abutres.repository.EstadosRepository;
+import br.com.abutres.repository.Estados;
 
 @Service
 public class EstadosService {
 	
 	@Autowired
-	private EstadosRepository estados;
+	private Estados estados;
 
 	public void salvar(Estado estado) {
 		estados.save(estado);

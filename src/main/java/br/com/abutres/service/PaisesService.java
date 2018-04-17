@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.abutres.model.Pais;
-import br.com.abutres.repository.PaisesRepository;
+import br.com.abutres.repository.Paises;
 
 @Service
 public class PaisesService {
 	
 	@Autowired
-	private PaisesRepository paises;
+	private Paises paises;
 
 	public void salvar(Pais pais) {
 		paises.save(pais);
@@ -22,7 +22,7 @@ public class PaisesService {
 		paises.deleteById(id);
 	}
 	
-	public List<Pais> findAll() {
+	public List<Pais> listaTodos() {
 		return paises.findAll();
 	}
 	
