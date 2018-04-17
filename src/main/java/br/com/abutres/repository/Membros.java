@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.abutres.model.Membro;
 
-public interface MembrosRepository extends JpaRepository<Membro, Long> {
+public interface Membros extends JpaRepository<Membro, Long> {
 
 }
