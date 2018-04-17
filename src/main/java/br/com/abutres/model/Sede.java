@@ -18,10 +18,15 @@ public class Sede implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
 	private String nome;
+	
 	private Membro diretor;
+	
 	private Membro subDiretor;
-	private String endereco;
+	
+	private Endereco endereco;
+	
 	private Sede sedeMae;
 
 	public Sede() {
@@ -60,11 +65,11 @@ public class Sede implements Serializable {
 		this.subDiretor = subDiretor;
 	}
 
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 
