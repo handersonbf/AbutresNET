@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layoutPadrao}">
+<head>
+<title>Cidades</title>
+</head>
+<body>
+  	<section class="section" layout:fragment="title" id="title">
+	  <h5>Cidades</h5>
+	</section>
+	<div layout:fragment="page_content" id="page_content">
+		<div class="row">
+			<div class="col s12 m12">
+				<table class="bordered centered striped highlight">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Nome</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cidade : ${cidades}">
+							<td><span th:text="${cidade.id}"></span></td>
+							<td><a th:href="@{/cidades/exibir/{id}(id=${cidade.id})}"><span th:text="${cidade.nome}"></span></a></td>
+							<td>
+								<a th:href="@{/cidades/editar/{id}(id=${cidade.id})}" class="btn-floating btn-small waves-effect waves-light midnight_city"><i class="material-icons">mode_edit</i></a>
+								
+								<form class="form_button_actions" th:action="@{/cidades/remover}" method="POST">
+									<input id="id" name="id" type="hidden" th:value="${cidade.id}"/>
+									<button class="btn-floating btn-small waves-effect waves-light midnight_city" type="submit" name="remover" onClick="return confirm('Você tem certeza?')">
+									<i class="material-icons right">delete_forever</i>
+									</button>
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>          
+	</div>	
+	<div layout:fragment="page_actions" id="page_actions">
+		<a th:href="@{/cidades/adicionar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Adicionar Cidade</a>	
+	</div>	
+</body>
+</html>
