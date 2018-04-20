@@ -5,8 +5,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,56 +25,45 @@ public class PaisesController {
 		
 	@GetMapping()
 	public ModelAndView listar() {
-		ModelAndView mv = new ModelAndView("views/paises/listar");
-		mv.addObject("paises", paises.listaTodos());
-		return mv;
+		ModelAndView modelAndView = new ModelAndView("views/paises/listar");
+		modelAndView.addObject("paises", paises.listaTodos());
+		return modelAndView;
+	}	
+
+	@GetMapping("/adicionar")
+	public ModelAndView adicionar(Pais pais) {
+		ModelAndView modelAndView = new ModelAndView("views/paises/adicionar");
+		modelAndView.addObject(pais);
+		return modelAndView;
 	}
+	
+	@PostMapping("/adicionar")
+	public ModelAndView salvar(@Valid Pais pais, BindingResult result, RedirectAttributes attributes) {
+		if (result.hasErrors()) {
+			return adicionar(pais);
+		}
+		this.paises.salvar(pais);			
+		attributes.addFlashAttribute("msg_sucess", "Pais salvo com sucesso.");
+		return new ModelAndView("redirect:/paises/");
+	}
+		
+	@GetMapping("/{id}")
+	public ModelAndView editar(@PathVariable Long id) {
+		return adicionar(paises.findById(id));
+	}	
+	
+	@DeleteMapping("/{id}")
+	public String remover(@PathVariable Long id, RedirectAttributes attributes) {
+		paises.remover(id);	
+		attributes.addFlashAttribute("msg_sucess", "Pais removido com sucesso.");
+		return "redirect:/paises";
+	}	
 	
 	@GetMapping("/exibir/{id}")
 	public ModelAndView exibir(@PathVariable("id") long id) {
 		Pais pais = paises.findById(id);
-		ModelAndView mv = new ModelAndView("views/paises/exibir");
-		mv.addObject("pais", pais);
-		return mv;
-	}
-	
-	@GetMapping("/adicionar")
-	public ModelAndView adicionar(Pais pais) {
-		ModelAndView mv = new ModelAndView("views/paises/adicionar");
-		return mv;
-	}
-	
-	@GetMapping("/editar/{id}")
-	public ModelAndView editar(@PathVariable("id") long id) {
-		Pais pais = paises.findById(id);
-		ModelAndView mv = new ModelAndView("views/paises/editar");
-		mv.addObject("pais", pais);
-		return mv;
+		ModelAndView modelAndView = new ModelAndView("views/paises/exibir");
+		modelAndView.addObject("pais", pais);
+		return modelAndView;
 	}	
-	
-	@PostMapping("/adicionar")
-	public ModelAndView salvar(@Valid Pais pais, BindingResult result, RedirectAttributes attributes) {
-		ModelAndView mv = new ModelAndView("views/paises/adicionar");
-		if (result.hasErrors()) {
-			mv.addObject("msg_error", "Verifique os erros.");
-			return mv;
-		}
-		this.paises.salvar(pais);	
-		mv.setViewName("redirect:/paises/");
-		attributes.addFlashAttribute("msg_sucess", "Pais salvo com sucesso.");
-		return mv;
-		
-	}
-	
-	@PostMapping("/remover")
-	public ModelAndView remover(long id) {
-		paises.remover(id);
-		return new ModelAndView("redirect:/paises/");
-	}
-	
-	/*
-	 * novo
-	 * salvar
-	 * 
-	 * */
 }
