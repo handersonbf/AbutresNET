@@ -2,14 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <body>
-	<div th:fragment="mensagemValidacao">
-		<div class="card-panel white-text teal lighten-2" th:if="${not #strings.isEmpty(msg_sucess)}">
-	    	<span th:text="${msg_sucess}"></span>
-		</div>			
-		<div class="card-panel white-text red lighten-2" th:if="${not #strings.isEmpty(msg_error)}">
-		    <span th:text="${msg_error}"></span>
+	<div th:fragment="msg_sucess" class="card-panel white-text teal lighten-2" th:if="${not #strings.isEmpty(msg_sucess)}">
+		<span th:text="${msg_sucess}">Mensagem sucesso.</span>
+	</div>
+	
+	<div th:fragment="msg_error" class="card-panel white-text red lighten-2" th:if="${#fields.hasAnyErrors()}">
+		<div th:each="erro: ${#fields.detailedErrors()}">
+			<i class="material-icons">info</i>
+			<span th:text="${erro.message}">Mensagem erro.</span>
 		</div>
-   </div>
+	</div>
 </body>
 
 </html>
