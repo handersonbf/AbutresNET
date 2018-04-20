@@ -22,7 +22,7 @@ public class EstadosService {
 		estados.deleteById(id);
 	}
 	
-	public List<Estado> findAll() {
+	public List<Estado> listaTodos() {
 		return estados.findAll();
 	}
 	

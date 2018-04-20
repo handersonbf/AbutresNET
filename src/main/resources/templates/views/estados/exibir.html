@@ -4,17 +4,33 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layoutPadrao}">
 <head>
-<title>Paises</title>
+<title>Estados</title>
 </head>
 <body>
+	<section class="section" layout:fragment="title" id="title">
+		<h5>Visualizar</h5>
+	</section>
 	<div layout:fragment="page_content" id="page_content">
-		<div th:each="estado : ${estado}">		
-			<div class="row">
-				<p>Nome: <span th:text=${estado.nome}></span></p>
+		<div class="row">
+			<div class="input-field col s12">
+				<label for="nome">País:</label>	
+				<br/>
+				<p id="nome" th:text="${estado.pais.nome}"></span>											
 			</div>
 		</div>
-	</div>	
+		
+		<div class="row">
+			<div class="input-field col s12">
+				<label for="nome">Nome:</label>	
+				<br/>
+				<p id="nome" th:text="${estado.nome}"></span>											
+			</div>
+		</div>
+	</div>
 	<div layout:fragment="page_actions" id="page_actions">
+	
+		<a th:href="@{/estados/adicionar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Adicionar</a>	
+		<a th:href="@{/estados/{id}(id=${estado.id})}" class="waves-effect waves-light btn"><i class="material-icons left">mode_edit</i>Editar</a>			
 		<a th:href="@{/estados}" class="waves-effect waves-light btn"><i class="material-icons left">replay</i>Voltar</a>
 	</div>
 </body>
