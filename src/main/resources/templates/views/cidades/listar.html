@@ -13,27 +13,37 @@
 	<div layout:fragment="page_content" id="page_content">
 		<div class="row">
 			<div class="col s12 m12">
-				<table class="bordered centered striped highlight">
+				<table class="bordered striped highlight">
 					<thead>
 						<tr>
-							<th>#</th>
+							<th class="center-align">#</th>
+							<th>Estado</th>
 							<th>Nome</th>
-							<th>Ações</th>
+							<th class="center-align">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="cidade : ${cidades}">
-							<td><span th:text="${cidade.id}"></span></td>
+							<td class="center-align"><span th:text="${cidade.id}"></span></td>
+							<td><span th:text="${cidade.estado.nome}"></span></td>
 							<td><a th:href="@{/cidades/exibir/{id}(id=${cidade.id})}"><span th:text="${cidade.nome}"></span></a></td>
-							<td>
-								<a th:href="@{/cidades/editar/{id}(id=${cidade.id})}" class="btn-floating btn-small waves-effect waves-light midnight_city"><i class="material-icons">mode_edit</i></a>
+							<td class="center-align">
+								<a th:href="@{/cidades/{id}(id=${cidade.id})}" class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">mode_edit</i></a>
 								
-								<form class="form_button_actions" th:action="@{/cidades/remover}" method="POST">
-									<input id="id" name="id" type="hidden" th:value="${cidade.id}"/>
-									<button class="btn-floating btn-small waves-effect waves-light midnight_city" type="submit" name="remover" onClick="return confirm('Você tem certeza?')">
-									<i class="material-icons right">delete_forever</i>
+								<form class="form_button_actions" 
+									th:action="@{/cidades/{id}(id=${cidade.id})}" 
+									method="POST"
+									th:onsubmit="'return confirm(\'Posso remover ' + ${cidade.nome} + '?\');'">
+									<input type="hidden" name="_method" value="DELETE" />
+									<button class="btn-floating btn-small waves-effect waves-light" type="submit" name="remover">
+										<i class="material-icons right">delete_forever</i>
 									</button>
 								</form>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" th:if="${cidades.empty}"> 
+								<i class="material-icons">announcement</i> Nenhum registro encontrado.
 							</td>
 						</tr>
 					</tbody>
