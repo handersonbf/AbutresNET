@@ -24,7 +24,7 @@
 	<div layout:fragment="page_actions" id="page_actions">
 	
 		<a th:href="@{/paises/adicionar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Adicionar</a>	
-		<a th:href="@{/paises/editar/{id}(id=${pais.id})}" class="waves-effect waves-light btn"><i class="material-icons left">mode_edit</i>Editar</a>			
+		<a th:href="@{/paises/{id}(id=${pais.id})}" class="waves-effect waves-light btn"><i class="material-icons left">mode_edit</i>Editar</a>			
 		<a th:href="@{/paises}" class="waves-effect waves-light btn"><i class="material-icons left">replay</i>Voltar</a>
 	</div>
 </body>
