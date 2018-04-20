@@ -4,28 +4,28 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layoutPadrao}">
 <head>
-<title>Paises</title>
+<title>Cidades</title>
 </head>
 <body>
 	<section class="section" layout:fragment="title" id="title">
 		<h5>Visualizar</h5>
 	</section>
 	<div layout:fragment="page_content" id="page_content">
-		<div th:each="pais : ${pais}">		
+		<div>		
 			<div class="row">
 					<div class="input-field col s6">
 						<label for="nome">Nome:</label>	
 						<br/>
-						<p id="nome" th:text="${pais.nome}"></span>											
+						<p id="nome" th:text="${cidade.nome}"></span>											
 					</div>
 			</div>
 		</div>
 	</div>	
 	<div layout:fragment="page_actions" id="page_actions">
 	
-		<a th:href="@{/paises/adicionar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Adicionar</a>	
-		<a th:href="@{/paises/editar/{id}(id=${pais.id})}" class="waves-effect waves-light btn"><i class="material-icons left">mode_edit</i>Editar</a>			
-		<a th:href="@{/paises}" class="waves-effect waves-light btn"><i class="material-icons left">replay</i>Voltar</a>
+		<a th:href="@{/cidades/adicionar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Adicionar</a>	
+		<a th:href="@{/cidades/editar/{id}(id=${cidade.id})}" class="waves-effect waves-light btn"><i class="material-icons left">mode_edit</i>Editar</a>			
+		<a th:href="@{/cidades}" class="waves-effect waves-light btn"><i class="material-icons left">replay</i>Voltar</a>
 	</div>
 </body>
 </html>

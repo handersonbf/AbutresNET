@@ -16,18 +16,32 @@
 				<table class="bordered striped highlight">
 					<thead>
 						<tr>
-							<th>#</th>
+							<th class="center-align">#</th>
 							<th>Nome</th>
-							<th>Ações</th>
+							<th class="center-align">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="pais : ${paises}">
-							<td><a th:href="@{/paises/exibir/{id}(id=${pais.id})}"><span th:text="${pais.id}"></span></a></td>
-							<td><span th:text="${pais.nome}"></span></td>
-							<td>
-								<a th:href="@{/paises/editar/{id}(id=${pais.id})}" class="btn-floating btn-small waves-effect waves-light midnight_city"><i class="material-icons">mode_edit</i></a>
-								<a th:href="@{/paises/remover/{id}(id=${pais.id})}" class="btn-floating btn-small waves-effect waves-light midnight_city"><i class="material-icons">delete_forever</i></a>
+							<td class="center-align"><span th:text="${pais.id}"></span></td>
+							<td><a th:href="@{/paises/exibir/{id}(id=${pais.id})}"><span th:text="${pais.nome}"></span></a></td>
+							<td class="center-align">
+								<a th:href="@{/paises/{id}(id=${pais.id})}" class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">mode_edit</i></a>
+								
+								<form class="form_button_actions" 
+									th:action="@{/paises/{id}(id=${pais.id})}" 
+									method="POST"
+									th:onsubmit="'return confirm(\'Posso remover ' + ${pais.nome} + '?\');'">
+									<input type="hidden" name="_method" value="DELETE" />
+									<button class="btn-floating btn-small waves-effect waves-light" type="submit" name="remover">
+										<i class="material-icons right">delete_forever</i>
+									</button>
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" th:if="${paises.empty}"> 
+								<i class="material-icons">announcement</i> Nenhum registro encontrado.
 							</td>
 						</tr>
 					</tbody>

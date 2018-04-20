@@ -4,27 +4,22 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layoutPadrao}">
 <head>
-<title>Paises</title>
+<title>Cidades</title>
 </head>
 <body>
 	<section class="section" layout:fragment="title" id="title">
-		<h5>Adicionar</h5>
+		<h5>Editar</h5>
 	</section>
 	<div layout:fragment="page_content" id="page_content">
-		<div class="row">				
-			<form class="col s12" th:object="${pais}"
-				th:action="@{/paises/adicionar}" method="POST">
-				<div th:replace="/fragments/mensagemValidacao :: msg_error"></div>		
-				
-				<input type="hidden" th:field="*{id}"/>
-				
+		<div class="row">
+			<form class="col s12" th:object="${cidade}"
+				th:action="@{/cidades/editar}" method="POST">
 				<div class="row">
 					<div class="input-field col s6">
-						<input id="nome" type="text" class="validate" th:field="*{nome}">
+						<input id="nome" type="text" class="validate" th:field="*{nome}" />
 						<label for="nome">Nome</label>
 					</div>
 				</div>
-				
 				<div>
 					<button class="btn waves-effect waves-light" type="submit"
 						name="action">
@@ -35,7 +30,7 @@
 		</div>
 	</div>
 	<div layout:fragment="page_actions" id="page_actions">
-		<a th:href="@{/paises}" class="waves-effect waves-light btn"><i
+		<a th:href="@{/cidades}" class="waves-effect waves-light btn"><i
 			class="material-icons left">replay</i>Voltar</a>
 	</div>
 </body>
