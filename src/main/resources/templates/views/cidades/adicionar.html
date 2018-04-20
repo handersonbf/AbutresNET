@@ -4,22 +4,37 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layoutPadrao}">
 <head>
-<title>Paises</title>
+<title>Cidades</title>
 </head>
 <body>
 	<section class="section" layout:fragment="title" id="title">
 		<h5>Adicionar</h5>
 	</section>
 	<div layout:fragment="page_content" id="page_content">
-		<div class="row">
+		<div class="row">				
 			<form class="col s12" th:object="${cidade}"
 				th:action="@{/cidades/adicionar}" method="POST">
+				<div th:replace="/fragments/mensagemValidacao :: msg_error"></div>		
+				
+				<input type="hidden" th:field="*{id}"/>
+				
 				<div class="row">
-					<div class="input-field col s6">
+					<div class="input-field col s12">						
+						<select id="estado" th:field=*{estado}>
+						  <option value="">Escolha uma opção</option>
+						  <option th:each="estado : ${listaTodosEstados} " th:value="${estado.id}" th:text="${estado.nome}"></option>
+						</select>
+						<label for="estado">Estado</label>						
+					 </div>					
+				</div>
+				
+				<div class="row">
+					<div class="input-field col s12">
 						<input id="nome" type="text" class="validate" th:field="*{nome}">
 						<label for="nome">Nome</label>
 					</div>
 				</div>
+				
 				<div>
 					<button class="btn waves-effect waves-light" type="submit"
 						name="action">
@@ -30,7 +45,7 @@
 		</div>
 	</div>
 	<div layout:fragment="page_actions" id="page_actions">
-		<a th:href="@{/cidades}" class="waves-effect waves-light btn"><i
+		<a th:href="@{/estados}" class="waves-effect waves-light btn"><i
 			class="material-icons left">replay</i>Voltar</a>
 	</div>
 </body>

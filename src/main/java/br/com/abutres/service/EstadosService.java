@@ -26,7 +26,7 @@ public class EstadosService {
 		return estados.findAll();
 	}
 	
-	public Estado findById(long id) {
+	public Estado buscaPorId(long id) {
 		return estados.getOne(id);
 	}
 }

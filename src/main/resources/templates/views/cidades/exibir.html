@@ -11,20 +11,26 @@
 		<h5>Visualizar</h5>
 	</section>
 	<div layout:fragment="page_content" id="page_content">
-		<div>		
-			<div class="row">
-					<div class="input-field col s6">
-						<label for="nome">Nome:</label>	
-						<br/>
-						<p id="nome" th:text="${cidade.nome}"></span>											
-					</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<label for="nome">Estado:</label>	
+				<br/>
+				<p id="nome" th:text="${cidade.estado.nome}"></span>											
 			</div>
 		</div>
-	</div>	
+		
+		<div class="row">
+			<div class="input-field col s12">
+				<label for="nome">Nome:</label>	
+				<br/>
+				<p id="nome" th:text="${cidade.nome}"></span>											
+			</div>
+		</div>
+	</div>
 	<div layout:fragment="page_actions" id="page_actions">
 	
 		<a th:href="@{/cidades/adicionar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Adicionar</a>	
-		<a th:href="@{/cidades/editar/{id}(id=${cidade.id})}" class="waves-effect waves-light btn"><i class="material-icons left">mode_edit</i>Editar</a>			
+		<a th:href="@{/cidades/{id}(id=${cidade.id})}" class="waves-effect waves-light btn"><i class="material-icons left">mode_edit</i>Editar</a>			
 		<a th:href="@{/cidades}" class="waves-effect waves-light btn"><i class="material-icons left">replay</i>Voltar</a>
 	</div>
 </body>

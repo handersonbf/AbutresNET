@@ -49,7 +49,7 @@ public class PaisesController {
 		
 	@GetMapping("/{id}")
 	public ModelAndView editar(@PathVariable Long id) {
-		return adicionar(paises.findById(id));
+		return adicionar(paises.buscaPorId(id));
 	}	
 	
 	@DeleteMapping("/{id}")
@@ -61,7 +61,7 @@ public class PaisesController {
 	
 	@GetMapping("/exibir/{id}")
 	public ModelAndView exibir(@PathVariable("id") long id) {
-		Pais pais = paises.findById(id);
+		Pais pais = paises.buscaPorId(id);
 		ModelAndView modelAndView = new ModelAndView("views/paises/exibir");
 		modelAndView.addObject("pais", pais);
 		return modelAndView;

@@ -26,7 +26,7 @@ public class PaisesService {
 		return paises.findAll();
 	}
 	
-	public Pais findById(long id) {
+	public Pais buscaPorId(long id) {
 		return paises.getOne(id);
 	}
 }

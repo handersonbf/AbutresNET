@@ -62,7 +62,7 @@ public class EstadosController {
 		
 	@GetMapping("/{id}")
 	public ModelAndView editar(@PathVariable Long id) {
-		return adicionar(estados.findById(id));
+		return adicionar(estados.buscaPorId(id));
 	}	
 	
 	@DeleteMapping("/{id}")
@@ -74,7 +74,7 @@ public class EstadosController {
 	
 	@GetMapping("/exibir/{id}")
 	public ModelAndView exibir(@PathVariable("id") long id) {
-		Estado estado = estados.findById(id);
+		Estado estado = estados.buscaPorId(id);
 		ModelAndView modelAndView = new ModelAndView("views/estados/exibir");
 		modelAndView.addObject("estado", estado);
 		return modelAndView;
