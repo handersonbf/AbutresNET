@@ -7,26 +7,35 @@
 <title>Estados</title>
 </head>
 <body>
+	<section class="section" layout:fragment="title" id="title">
+		<h5>Adicionar</h5>
+	</section>
 	<div layout:fragment="page_content" id="page_content">
-		<div class="row">
-			<form class="col s12" method="POST" style="margin: 20px 0"
-				th:object="${estado}" th:action="@{/estados/adicionar}">
-				 <div class="row">
-					<div class="input-field col s12">
-					    <select id="pais" name="pais">
-					      <option value="" disabled selected>Escolha uma opção</option>
-					      <option th:each="pais : ${listaTodosPaises} " th:value="${pais.id}" th:text="${pais.nome}"></option>
-					    </select>
-					    <label>Pais</label>
-					  </div>
-			    </div>
+		<div class="row">				
+			<form class="col s12" th:object="${estado}"
+				th:action="@{/estados/adicionar}" method="POST">
+				<div th:replace="/fragments/mensagemValidacao :: msg_error"></div>		
+				
+				<input type="hidden" th:field="*{id}"/>
+				
 				<div class="row">
-				  <div class="input-field col s12">
-				    <input id="nome" type="text" class="validate" th:field="*{nome}" >
-				    <label for="nome">Nome</label>
-				  </div>
+					<div class="input-field col s12">						
+						<select id="pais" th:field=*{pais}>
+						  <option value="">Escolha uma opção</option>
+						  <option th:each="pais : ${listaTodosPaises} " th:value="${pais.id}" th:text="${pais.nome}"></option>
+						</select>
+						<label for="pais">País</label>						
+					 </div>					
 				</div>
-				<div class="input-field col s12">
+				
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="nome" type="text" class="validate" th:field="*{nome}">
+						<label for="nome">Nome</label>
+					</div>
+				</div>
+				
+				<div>
 					<button class="btn waves-effect waves-light" type="submit"
 						name="action">
 						Salvar <i class="material-icons right">save</i>
@@ -34,11 +43,10 @@
 				</div>
 			</form>
 		</div>
-	</div>	
-	<div layout:fragment="page_actions" id="page_actions">
-		<a th:href="@{/estados}" class="waves-effect waves-light btn"><i class="material-icons left">replay</i>Voltar</a>
 	</div>
-		<th:block layout:fragment="scripts"></th:block>
+	<div layout:fragment="page_actions" id="page_actions">
+		<a th:href="@{/estados}" class="waves-effect waves-light btn"><i
+			class="material-icons left">replay</i>Voltar</a>
+	</div>
 </body>
-
 </html>
