@@ -11,15 +11,20 @@
 		<h5>Adicionar</h5>
 	</section>
 	<div layout:fragment="page_content" id="page_content">
-		<div class="row">
+		<div class="row">				
 			<form class="col s12" th:object="${pais}"
 				th:action="@{/paises/adicionar}" method="POST">
+				<div th:replace="/fragments/mensagemValidacao :: msg_error"></div>		
+				
+				<input type="hidden" th:field="*{id}"/>
+				
 				<div class="row">
 					<div class="input-field col s6">
 						<input id="nome" type="text" class="validate" th:field="*{nome}">
 						<label for="nome">Nome</label>
 					</div>
 				</div>
+				
 				<div>
 					<button class="btn waves-effect waves-light" type="submit"
 						name="action">
