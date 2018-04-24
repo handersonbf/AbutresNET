@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layoutPadrao}">
+<head>
+<title>Membros</title>
+</head>
+<body>
+	<section class="section" layout:fragment="title" id="title">
+		<h5>Adicionar Membro</h5>
+	</section>
+	<div layout:fragment="page_content" id="page_content">
+		<div class="row">
+			<form class="col s12" th:object="${membro}"
+				th:action="@{/membros/adicionar}" method="POST">
+				<div th:replace="/fragments/mensagemValidacao :: msg_error"></div>
+
+				<input type="hidden" th:field="*{id}" />
+
+				<div class="row">
+					<div class="input-field col s6">
+						<i class="material-icons prefix">account_circle</i> <input
+							id="nome" type="text" class="validate" th:field="*{nome}"
+							th:errorclass="invalid"> <label for="nome">Nome</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="apelido" type="text" class="validate"
+							th:field="*{apelido}" th:errorclass="invalid"> <label
+							for="apelido">Apelido</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s6">
+						<i class="material-icons prefix">phone</i> <input id="telefone"
+							type="tel" class="validate phone_with_ddd" th:field="*{telefone}"
+							th:errorclass="invalid"> <label for="telefone">Telefone</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">email</i> <input id="email"
+							type="email" class="validate" th:field="*{email}"> <label
+							for="email">E-mail</label>
+					</div>
+				</div>
+
+				<div class="divider"></div>
+				<div class="section">
+					<h5>Endereço</h5>
+					<div class="row">
+						<div class="input-field col s12">
+							<i class="material-icons prefix">email</i> <input id="email"
+								type="email" class="validate" th:field="*{email}"> <label
+								for="email">E-mail</label>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="row">
+					<div class="input-field col s6">
+						<span for="dataNascimento">Data de Nascimento</span> <input
+							id="dataNascimento" type="date" class="validate"
+							th:field="*{dataNascimento}">
+					</div>
+					<div class="input-field col s6">
+						<span>Data de Admissao</span> <input id="dataAdmissao" type="date"
+							class="validate" th:field="*{dataAdmissao}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s6">
+						<label for="cnh">CNH</label> <input id="cnh" type="number"
+							class="validate" th:field="*{cnh}" />
+					</div>
+					<div class="input-field col s6">
+						<label for="veiculo">Veiculo</label> <input id="veiculo"
+							type="text" class="validate" th:field="*{veiculo}" />
+					</div>
+				</div>
+
+
+				<div>
+					<button class="btn waves-effect waves-light" type="submit"
+						name="action">
+						Salvar <i class="material-icons right">save</i>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div layout:fragment="page_actions" id="page_actions">
+		<a th:href="@{/membros}" class="waves-effect waves-light btn"><i
+			class="material-icons left">replay</i>Voltar</a>
+	</div>
+
+	<script type="text/javascript" layout:fragment="scripts"
+		th:src="@{/js/mask.js}"></script>
+</body>
+</html>

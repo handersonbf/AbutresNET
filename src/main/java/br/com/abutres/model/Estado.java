@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -23,7 +23,7 @@ public class Estado implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_estado")
 	private Long id;
 	
-	@NotEmpty
+	@NotBlank
 	private String nome;
 	
 	@NotNull(message="País não pode ficar em branco!")
