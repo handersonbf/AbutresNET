@@ -25,7 +25,7 @@ public class Sede implements Serializable {
 	
 	private Membro subDiretor;
 	
-	private Endereco endereco;
+	private String endereco;
 	
 	private Sede sedeMae;
 
@@ -65,11 +65,11 @@ public class Sede implements Serializable {
 		this.subDiretor = subDiretor;
 	}
 
-	public Endereco getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 
