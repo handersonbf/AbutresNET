@@ -2,10 +2,16 @@ package br.com.abutres.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.abutres.model.Sede;
 import br.com.abutres.service.SedesService;
@@ -15,6 +21,8 @@ public class SedesController {
 	
 	@Autowired
 	private SedesService sedesService;
+	
+	private static final String ADICIONAR_SEDE_VIEW = "views/sedes/adicionar";
 	
 	
 	@GetMapping("/sedes")
@@ -32,8 +40,14 @@ public class SedesController {
 	}
 	
 	@PostMapping("/sedes/adicionar")
-	public String adicionar(Sede sede) {
+	public String adicionar(@Validated Sede sede, Errors err, RedirectAttributes att) {
+		if(err.hasErrors()) {
+			System.out.println("erro ---> "+err.getAllErrors());
+			return ADICIONAR_SEDE_VIEW;
+		}
+		
 		this.sedesService.salvar(sede);
+		att.addFlashAttribute("msg-success", "Titulo salvo com sucesso!");
 		return "redirect:/sedes";
 	}
 	
@@ -43,5 +57,16 @@ public class SedesController {
 		ModelAndView view = new ModelAndView("views/sedes/exibir");
 		view.addObject("sede", sede);
 		return view;
+	}
+	
+	@DeleteMapping("/sedes/remover/{id}")
+	public String remover(@PathVariable Long id, Errors err, RedirectAttributes att) {
+		if(!err.hasErrors()) {
+			sedesService.remover(id);
+		}else {
+			System.out.println("----> "+err.getAllErrors());
+		}
+		
+		return "redirect:/sedes";
 	}
 }
