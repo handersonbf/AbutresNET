@@ -1,5 +1,7 @@
 package br.com.abutres.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -40,7 +42,7 @@ public class SedesController {
 	}
 	
 	@PostMapping("/sedes/adicionar")
-	public String adicionar(@Validated Sede sede, Errors err, RedirectAttributes att) {
+	public String adicionar(@Valid Sede sede, Errors err, RedirectAttributes att) {
 		if(err.hasErrors()) {
 			System.out.println("erro ---> "+err.getAllErrors());
 			return ADICIONAR_SEDE_VIEW;

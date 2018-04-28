@@ -17,6 +17,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 @Entity
@@ -58,9 +59,11 @@ public class Membro implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_nascimento")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataNascimento;
 
 	@Column(name = "data_admissao")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataAdmissao;
 
 	@NumberFormat
