@@ -58,11 +58,15 @@ public class Membro implements Serializable {
 	private String endereco;
 
 	private String motoClubeItens;
-	private Patente patente;
-	private Sede sede;
 	private String advertencias;
 	private String punicoes;
 	private String foto;
+	private String ocupacao;
+	private Membro padrinho;
+	private Patente patente;
+	private Sede sede;
+	private Cidade cidade;
+	private Estado estado;
 	
 	@Enumerated(EnumType.STRING)
 	private EnumStatus statusMembro;
@@ -155,22 +159,6 @@ public class Membro implements Serializable {
 		this.motoClubeItens = motoClubeItens;
 	}
 
-	public Patente getPatente() {
-		return patente;
-	}
-
-	public void setPatente(Patente patente) {
-		this.patente = patente;
-	}
-
-	public Sede getSede() {
-		return sede;
-	}
-
-	public void setSede(Sede sede) {
-		this.sede = sede;
-	}
-
 	public String getAdvertencias() {
 		return advertencias;
 	}
@@ -195,6 +183,54 @@ public class Membro implements Serializable {
 		this.foto = foto;
 	}
 
+	public String getOcupacao() {
+		return ocupacao;
+	}
+
+	public void setOcupacao(String ocupacao) {
+		this.ocupacao = ocupacao;
+	}
+
+	public Membro getPadrinho() {
+		return padrinho;
+	}
+
+	public void setPadrinho(Membro padrinho) {
+		this.padrinho = padrinho;
+	}
+
+	public Patente getPatente() {
+		return patente;
+	}
+
+	public void setPatente(Patente patente) {
+		this.patente = patente;
+	}
+
+	public Sede getSede() {
+		return sede;
+	}
+
+	public void setSede(Sede sede) {
+		this.sede = sede;
+	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
 	public EnumStatus getStatusMembro() {
 		return statusMembro;
 	}
@@ -203,21 +239,29 @@ public class Membro implements Serializable {
 		this.statusMembro = statusMembro;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((advertencias == null) ? 0 : advertencias.hashCode());
 		result = prime * result + ((apelido == null) ? 0 : apelido.hashCode());
+		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((cnh == null) ? 0 : cnh.hashCode());
 		result = prime * result + ((dataAdmissao == null) ? 0 : dataAdmissao.hashCode());
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
+		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((foto == null) ? 0 : foto.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((motoClubeItens == null) ? 0 : motoClubeItens.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((ocupacao == null) ? 0 : ocupacao.hashCode());
+		result = prime * result + ((padrinho == null) ? 0 : padrinho.hashCode());
 		result = prime * result + ((patente == null) ? 0 : patente.hashCode());
 		result = prime * result + ((punicoes == null) ? 0 : punicoes.hashCode());
 		result = prime * result + ((sede == null) ? 0 : sede.hashCode());
@@ -246,6 +290,11 @@ public class Membro implements Serializable {
 				return false;
 		} else if (!apelido.equals(other.apelido))
 			return false;
+		if (cidade == null) {
+			if (other.cidade != null)
+				return false;
+		} else if (!cidade.equals(other.cidade))
+			return false;
 		if (cnh == null) {
 			if (other.cnh != null)
 				return false;
@@ -271,6 +320,11 @@ public class Membro implements Serializable {
 				return false;
 		} else if (!endereco.equals(other.endereco))
 			return false;
+		if (estado == null) {
+			if (other.estado != null)
+				return false;
+		} else if (!estado.equals(other.estado))
+			return false;
 		if (foto == null) {
 			if (other.foto != null)
 				return false;
@@ -290,6 +344,16 @@ public class Membro implements Serializable {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
+			return false;
+		if (ocupacao == null) {
+			if (other.ocupacao != null)
+				return false;
+		} else if (!ocupacao.equals(other.ocupacao))
+			return false;
+		if (padrinho == null) {
+			if (other.padrinho != null)
+				return false;
+		} else if (!padrinho.equals(other.padrinho))
 			return false;
 		if (patente == null) {
 			if (other.patente != null)
@@ -322,50 +386,5 @@ public class Membro implements Serializable {
 	}
 	
 
-	/*
-	 * @OneToOne
-	 * 
-	 * @JoinColumn(name="patente_id") private Patente patente;
-	 * 
-	 * private String cnh;
-	 * 
-	 * @OneToMany
-	 * 
-	 * @JoinTable( name="membro_has_moto_clube_itens", joinColumns= {
-	 * 
-	 * @JoinColumn(name="membro_id", referencedColumnName="id") },
-	 * inverseJoinColumns= {
-	 * 
-	 * @JoinColumn(name="moto_clube_item_id", referencedColumnName="id") } ) private
-	 * List<MotoClubeItem> motoClubeItens;
-	 * 
-	 * 
-	 * 
-	 * @OneToMany
-	 * 
-	 * @JoinTable( name="membro_has_membro_advertencias", joinColumns= {
-	 * 
-	 * @JoinColumn(name="membro_id", referencedColumnName="id") },
-	 * inverseJoinColumns= {
-	 * 
-	 * @JoinColumn(name="membro_advertencias_id", referencedColumnName="id") } )
-	 * private List<MembroAdvertencia> membroAdvertencias;
-	 * 
-	 * @OneToMany(cascade= {CascadeType.REMOVE})
-	 * 
-	 * @JoinTable( name="membro_has_membro_punicoes", joinColumns= {
-	 * 
-	 * @JoinColumn(name="membro_id", referencedColumnName="id") },
-	 * inverseJoinColumns= {
-	 * 
-	 * @JoinColumn(name="membro_punicoes_id", referencedColumnName="id") } ) private
-	 * List<MembroPunicoes> membroPunicoes;
-	 * 
-	 * private String foto;
-	 * 
-	 * @Enumerated(EnumType.STRING) private Status status;
-	 */
-
 	
-
 }
