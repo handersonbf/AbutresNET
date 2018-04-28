@@ -27,6 +27,21 @@ public class Membro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	public Membro() {
+		
+	}
+
+	public Membro(@NotBlank String nome, @NotBlank String apelido, @Size(min = 10, max = 10) String telefone,
+			Date dataNascimento, Date dataAdmissao, String endereco) {
+		super();
+		this.nome = nome;
+		this.apelido = apelido;
+		this.telefone = telefone;
+		this.dataNascimento = dataNascimento;
+		this.dataAdmissao = dataAdmissao;
+		this.endereco = endereco;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_membro")
 	private Long id;
@@ -70,6 +85,8 @@ public class Membro implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	private EnumStatus statusMembro;
+	
+	
 
 	public Long getId() {
 		return id;
