@@ -23,6 +23,9 @@ public class SedeServicoTests {
 	@Autowired
 	MembrosService membrosService;
 	
+	public void teste() {
+		
+	}
 	
 	private Membro membro() {
 		String nomeHanderson = "Handerson Frota";
