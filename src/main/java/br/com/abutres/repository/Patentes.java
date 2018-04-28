@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.abutres.model.Patente;
 
-public interface PatenteRepository extends JpaRepository<Patente, Long> {
+public interface Patentes extends JpaRepository<Patente, Long> {
 
 }

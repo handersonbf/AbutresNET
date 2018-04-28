@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<aside id="left-sidebar-nav" th:fragment="sidenav">	
+			<ul id="slide-out" class="side-nav fixed z-depth-5">
+				<li class="logo-wrapper"></li> 
+				<li><a class="waves-effect" href="#!" title="Clique aqui para acessar a Dashboard" th:href="@{/}"><i class="material-icons left">dashboard</i>Dashboard</a></li>
+				<li><a class="waves-effect" href="#!" title="Clique aqui para visualizar as sedes" th:href="@{/sedes}"><i class="material-icons left">location_city</i>Sedes</a></li>
+				<li><a class="waves-effect" href="#!" title="Clique aqui para visualizar os membros" th:href="@{/membros}"><i class="material-icons left">motorcycle</i>Membros</a></li>
+				<li><div class="divider"></div></li>
+				<li><a class="subheader">Configurações de Sistema</a></li>
+				<li class="no-padding">
+					<ul class="collapsible collapsible-accordion">
+						<li>
+							<a class="collapsible-header">Cadastros Gerais</a>
+							<div class="collapsible-body">
+								<ul>
+									<li><a class="waves-effect" href="#!" title="Clique aqui para visualizar os usuários" th:href="@{/usuarios}"><i class="material-icons left">group</i>Usuários</a></li>
+									<li><div class="divider"></div></li>
+									<li class="no-padding">
+										<ul class="collapsible collapsible-accordion">
+											<li>
+												<a class="collapsible-header">Básicos</a>
+												<div class="collapsible-body">
+													<ul>
+														<li><a class="waves-effect" href="#!" title="Clique aqui para visualizar os países" th:href="@{/paises}"><i class="material-icons">keyboard_arrow_right</i>Países</a></li>
+														<li><a class="waves-effect" href="#!" title="Clique aqui para visualizar os estados" th:href="@{/estados}"><i class="material-icons">keyboard_arrow_right</i>Estados</a></li>
+														<li><a class="waves-effect" href="#!" title="Clique aqui para visualizar os cidades" th:href="@{/cidades}"><i class="material-icons">keyboard_arrow_right</i>Cidades</a></li>
+													</ul>
+												</div>
+											</li>
+											<li><div class="divider"></div></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li><a class="waves-effect" href="#!" title="Clique aqui para visualizar as configurações" th:href="@{/configuracoes}"><i class="material-icons left">settings</i>Parâmetros</a></li>
+						<li><a class="waves-effect" href="#!" title="Clique aqui para visualizar a ajuda do sistema" th:href="@{/ajuda}"><i class="material-icons left">live_help</i>Ajuda</a></li>
+					</ul>
+				</li>
+				<aside class="hide-on-large-only">
+					<li><div class="divider"></div></li>
+					<li><a href="#!"><i class="material-icons left">face</i>Perfil</a></li>					
+					<li><a href="#!"><i class="material-icons left">keyboard_tab</i>Logout</a></li>
+				</aside>
+			</ul>
+		</aside>
+	</body>
+</html>
