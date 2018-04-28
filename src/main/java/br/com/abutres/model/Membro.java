@@ -19,8 +19,6 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.NumberFormat;
 
-import br.com.abutres.enums.EnumStatus;
-
 @Entity
 @SequenceGenerator(name = "seq_membro", sequenceName = "seq_membro", initialValue = 1, allocationSize = 1)
 public class Membro implements Serializable {
