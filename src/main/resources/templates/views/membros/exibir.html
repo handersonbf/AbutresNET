@@ -4,34 +4,144 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layoutPadrao}">
 <head>
-<title>Cidades</title>
+<title>Membros</title>
 </head>
 <body>
 	<section class="section" layout:fragment="title" id="title">
-		<h5>Visualizar</h5>
+		<h5>Editar Membro</h5>
 	</section>
 	<div layout:fragment="page_content" id="page_content">
 		<div class="row">
-			<div class="input-field col s12">
-				<label for="nome">Estado:</label>	
-				<br/>
-				<p id="nome" th:text="${cidade.estado.nome}"></span>											
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="input-field col s12">
-				<label for="nome">Nome:</label>	
-				<br/>
-				<p id="nome" th:text="${cidade.nome}"></span>											
-			</div>
+			<form class="col s12" th:object="${membro}"
+				th:action="@{/membros/adicionar}" method="POST">
+				<div th:replace="/fragments/mensagemValidacao :: msg_error"></div>
+
+				<input type="hidden" th:field="*{id}" />
+				<div class="section">
+					<h5>Dados pessoais</h5>
+					<div class="row">
+						<div class="input-field col s6">
+							<i class="material-icons prefix"></i><input
+								id="nome" type="text" class="validate" th:field="*{nome}"
+								th:errorclass="invalid"> <label for="nome">Nome</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="apelido" type="text" class="validate"
+								th:field="*{apelido}" th:errorclass="invalid"> <label
+								for="apelido">Apelido</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s3">
+							<i class="material-icons prefix"></i>
+							<label for="dataNascimento">Data de Nascimento</label>
+						</div>
+						<div class="input-field col s2">
+							<input id="dataNascimento" type="date" class="validate"
+								th:field="*{dataNascimento}" th:errorclass="invalid">
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+								<i class="material-icons prefix"></i><input
+								id="ocupacao" type="text" class="validate" th:field="*{ocupacao}"
+								th:errorclass="invalid"> <label for="nome">Ocupação</label>
+						</div>
+						<div class="input-field col s6">
+							<input
+								id="email" type="email" class="validate" th:field="*{email}"
+								th:errorclass="invalid"> <label for="email">E-mail</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<i class="material-icons prefix"></i><input
+								id="endereco" type="text" class="validate" th:field="*{endereco}"
+								th:errorclass="invalid"> <label for="endereco">Endereço</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="estado" type="text" class="validate"
+								th:field="*{estado.nome}" th:errorclass="invalid"> <label
+								for="estado">Estado</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<i class="material-icons prefix"></i><input
+								id="cidade" type="text" class="validate" th:field="*{cidade.nome}"
+								th:errorclass="invalid"> <label for="cidade">Cidade</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<i class="material-icons prefix"></i> <input id="cnh" type="number"
+								class="validate" th:field="*{cnh}" /><label for="cnh">CNH</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="veiculo"
+								type="text" class="validate" th:field="*{veiculo}" />
+								<label for="veiculo">Veiculo</label> 
+						</div>
+					</div>
+					
+				</div>
+				<div class="divider"></div>
+				<div class="section">
+					<h5>Dados do Clube</h5>
+					<div class="row">
+						<div class="input-field col s5">
+							<i class="material-icons prefix"></i> <input id="patente"
+								type="text" class="validate" th:field="*{patente.nome}"> <label
+								for="patente">Patente</label>
+						</div>
+						<div class="input-field col s3">
+							<i class="material-icons prefix"></i>
+							<label for="dataAdmissao">Data de Admissão</label>
+						</div>
+						<div class="input-field col s3">
+							<input id="dataAdmissao" type="date" class="validate"
+								th:field="*{dataAdmissao}" th:errorclass="invalid">
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<i class="material-icons prefix"></i> 
+								<label for="padrinho">Padrinho</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="sede"
+								type="text" class="validate" th:field="*{sede.nome}"> <label
+								for="sede">Sede</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<i class="material-icons prefix"></i>
+							 <label
+								for="statusMembro">Status</label>
+						</div>
+						
+					</div>
+					
+					
+				</div>
+
+
+				<div>
+					<button class="btn waves-effect waves-light" type="submit"
+						name="action">
+						Salvar <i class="material-icons right"></i>
+					</button>
+				</div>
+			</form>
 		</div>
 	</div>
 	<div layout:fragment="page_actions" id="page_actions">
-	
-		<a th:href="@{/cidades/adicionar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Adicionar</a>	
-		<a th:href="@{/cidades/{id}(id=${cidade.id})}" class="waves-effect waves-light btn"><i class="material-icons left">mode_edit</i>Editar</a>			
-		<a th:href="@{/cidades}" class="waves-effect waves-light btn"><i class="material-icons left">replay</i>Voltar</a>
+		<a th:href="@{/membros}" class="waves-effect waves-light btn"><i
+			class="material-icons left"></i>Voltar</a>
 	</div>
+
+	<script type="text/javascript" layout:fragment="scripts"
+		th:src="@{/js/mask.js}"></script>
 </body>
 </html>

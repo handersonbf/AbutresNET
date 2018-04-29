@@ -67,4 +67,5 @@ public class MembrosController {
 		modelAndView.addObject("membro", membro);
 		return modelAndView;
 	}	
+	
 }
