@@ -34,6 +34,7 @@ public class MembrosController {
 	public ModelAndView adicionar(Membro membro) {
 		ModelAndView modelAndView = new ModelAndView("views/membros/adicionar");
 		modelAndView.addObject(membro);
+		System.out.println("Entrou");
 		return modelAndView;
 	}
 	
