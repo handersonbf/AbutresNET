@@ -80,7 +80,7 @@ public class Membro implements Serializable {
 	private String punicoes;
 	private String foto;
 	private String ocupacao;
-	private Membro padrinho;
+	private String padrinho;
 	private Patente patente;
 	private Sede sede;
 	private Cidade cidade;
@@ -211,12 +211,12 @@ public class Membro implements Serializable {
 		this.ocupacao = ocupacao;
 	}
 
-	public Membro getPadrinho() {
+	public String getPadrinho() {
 		return padrinho;
 	}
 
-	public void setPadrinho(Membro padrinho) {
-		this.padrinho = padrinho;
+	public void setPadrinho(String padrinho) {
+		this.padrinho = padrinho;		
 	}
 
 	public Patente getPatente() {
