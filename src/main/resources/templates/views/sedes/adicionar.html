@@ -19,8 +19,9 @@
 	<div layout:fragment="page_content" id="page_content">
 		<div class="row">
 			<div class="col s12 m12">
+			
 				<form class="form-inline" method="POST" style="margin: 20px 0"
-					th:object="${sede}" th:action="@{/sedes/adicionar}">
+					th:object="${sede}" th:action="@{/sedes/salva}">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Nome"
 							th:field="*{nome}" />

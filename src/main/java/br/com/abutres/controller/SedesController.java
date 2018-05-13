@@ -21,14 +21,11 @@ public class SedesController {
 	@Autowired
 	private SedesService sedesService;
 	
-	private static final String ADICIONAR_SEDE_VIEW = "views/sedes/adicionar";
-	
-	
 	@GetMapping("/sedes")
-	public ModelAndView listar() {
-		ModelAndView view = new ModelAndView("views/sedes/listar");
-		view.addObject("sedes", sedesService.findAll());
-		return view;
+	public String listar() {
+
+		
+		return "/views/sedes/listar";
 	}
 	
 	@GetMapping("/sedes/adicionar")
@@ -42,7 +39,7 @@ public class SedesController {
 	public String adicionar(@Valid Sede sede, Errors err, RedirectAttributes att) {
 		if(err.hasErrors()) {
 			System.out.println("erro ---> "+err.getAllErrors());
-			return ADICIONAR_SEDE_VIEW;
+			return "/views/sedes/;
 		}
 		
 		this.sedesService.salvar(sede);
