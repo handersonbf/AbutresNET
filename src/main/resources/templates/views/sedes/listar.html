@@ -42,7 +42,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="sede : ${sedes}">
+						<tr th:each="sede : ${sedesLista}">
 							<td><a th:href="@{/sedes/exibir/{id}(id=${sede.id})}"><span th:text="${sede.id}"></span></a></td>
 							<td><span th:text="${sede.nome}"></span></td>
 							<td>
@@ -60,7 +60,7 @@
 		</div>
 	</div>	
 	<div layout:fragment="page_actions" id="page_actions">
-		<a th:href="@{/sedes/adicionar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Adicionar Sede</a>			
+		<a th:href="@{/sedes/cadastrar}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Adicionar Sede</a>			
 	</div>
 	<th:block layout:fragment="scripts">
 		<script type="text/javascript" th:src="@{/js/materialize.js}"></script>
