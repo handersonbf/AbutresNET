@@ -20,7 +20,7 @@ public class SedesController {
 	
 	@GetMapping("/sedes")
 	public String listar(ModelMap model) {
-		model.addAttribute("sedesLista", sedesService.findAll());
+		model.addAttribute("sedes", sedesService.findAll());
 		return "/views/sedes/listar";
 	}
 	
@@ -32,7 +32,7 @@ public class SedesController {
 	@PostMapping("/sedes/salvar")
 	public String adicionar(Sede sede, RedirectAttributes att) {
 		sedesService.salvar(sede);
-		att.addFlashAttribute("msg-success", "Sede inserida com sucesso!");
+		att.addFlashAttribute("msg_sucess", "Sede inserida com sucesso!");
 
 		return "redirect:/sedes/cadastrar";
 	}
@@ -40,7 +40,7 @@ public class SedesController {
 	@GetMapping("/sedes/remover/{id}")
 	public String remover(@PathVariable("id") Long id, ModelMap model) {
 		sedesService.remover(id);
-		model.addAttribute("msg-success", "Sede remodiva com sucesso.");
+		model.addAttribute("msg_sucess", "Sede removida com sucesso.");
 		return listar(model);
 	}
 	
@@ -53,7 +53,7 @@ public class SedesController {
 	}
 	@PostMapping("/sedes/editar")
 	public String editar(Sede sede, RedirectAttributes att) {
-		att.addFlashAttribute("msg-success", "Sede editada com sucesso.");
+		att.addFlashAttribute("msg_sucess", "Sede editada com sucesso.");
 		return "redirect:/sedes/listar";
 	}
 	
