@@ -42,9 +42,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="sede : ${sedesLista}">
-							<td><a th:href="@{/sedes/exibir/{id}(id=${sede.id})}"><span th:text="${sede.id}"></span></a></td>
-							<td><span th:text="${sede.nome}"></span></td>
+						<tr th:each="sede : ${sedes}">
+							<td><a th:href="@{/sedes/exibir/{id}(id=${sede.id})}">
+									<span th:text="${sede.id}"></span>
+								</a>
+							</td>
+							<td><a th:href="@{/sedes/exibir/{id}(id=${sede.id})}">
+								<span th:text="${sede.nome}"></span>
+								</a>
+							</td>
 							<td>
 								<a th:href="@{/sedes/editar/{id}(id=${sede.id})}" class="btn-floating btn-small waves-effect waves-light"><i class="small material-icons">mode_edit</i></a>
 								<a th:href="@{/sedes/remover/{id}(id=${sede.id})}" class="btn-floating btn-small waves-effect waves-light"><i class="small material-icons">delete_forever</i></a>
