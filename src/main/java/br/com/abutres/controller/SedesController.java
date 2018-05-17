@@ -21,12 +21,12 @@ public class SedesController {
 	@GetMapping("/sedes")
 	public String listar(ModelMap model) {
 		model.addAttribute("sedes", sedesService.findAll());
-		return "/views/sedes/listar";
+		return "views/sedes/listar";
 	}
 	
 	@GetMapping("/sedes/cadastrar")
 	public String adicionar(Sede sede) {
-		return "/views/sedes/adicionar";
+		return "views/sedes/adicionar";
 	}
 	
 	@PostMapping("/sedes/salvar")

@@ -17,7 +17,7 @@ public class ErrorView  implements ErrorViewResolver{
 
 		map.forEach( (k, v) -> System.out.println(k + ":" + v + "\n"));
 		
-		ModelAndView model = new ModelAndView("/error");
+		ModelAndView model = new ModelAndView("error");
 		model.addObject("status", status.value());
 		
 		switch(status.value()) {
