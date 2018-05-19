@@ -2,9 +2,12 @@ package br.com.abutres.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +26,7 @@ import br.com.abutres.service.SedesService;
 public class SedesController {
 	
 	@Autowired
-	private SedesService sedesService;
+	private SedesService sedes;
 	
 	
 	@Autowired
@@ -34,48 +37,47 @@ public class SedesController {
 		return this.paises.listaTodos();
 	}
 	
-	@GetMapping
-	public String listar(ModelMap model) {
-		model.addAttribute("sedes", sedesService.findAll());
-		return "views/sedes/listar";
+	@GetMapping()
+	public ModelAndView listar() {
+		ModelAndView modelAndView = new ModelAndView("views/sedes/listar");
+		modelAndView.addObject("sedes", sedes.listaTodos());
+		return modelAndView;
+	}	
+	
+	@GetMapping("/adicionar")
+	public ModelAndView adicionar(Sede sede) {
+		ModelAndView modelAndView = new ModelAndView("views/sedes/adicionar");
+		modelAndView.addObject(sede);
+		return modelAndView;
 	}
 	
-	@GetMapping("/cadastrar")
-	public ModelAndView adicionarCad(Sede sede) {
-		ModelAndView mv = new ModelAndView("views/sedes/adicionar");
+	@PostMapping("/adicionar")
+	public ModelAndView salvar(@Valid Sede sede, BindingResult result, RedirectAttributes attributes) {
+		if (result.hasErrors()) {
+			return adicionar(sede);
+		}
+		this.sedes.salvar(sede);			
+		attributes.addFlashAttribute("msg_sucess", "Sede salvo com sucesso.");
+		return new ModelAndView("redirect:/sedes/");
+	}
 		
-		mv.addObject(sede);
-		
-		return mv;
-	}
-	
-	@PostMapping("/salvar")
-	public String adicionar(Sede sede, RedirectAttributes att) {
-		sedesService.salvar(sede);
-		att.addFlashAttribute("msg_sucess", "Operação realizada com sucesso!");
-
-		return "redirect:/sedes/cadastrar";
-	}
-	
-	@GetMapping("/remover/{id}")
-	public String remover(@PathVariable("id") Long id, ModelMap model) {
-		sedesService.remover(id);
-		model.addAttribute("msg_sucess", "Operação realizada com sucesso.");
-		return listar(model);
-	}
-	
-	
-	@GetMapping("/editar/{id}")
+	@GetMapping("/{id}")
 	public ModelAndView editar(@PathVariable Long id) {
-		return adicionarCad(sedesService.findById(id));
-	}
-
-
-	@GetMapping("/sedes/exibir/{id}")
+		return adicionar(sedes.buscaPorId(id));
+	}	
+	
+	@DeleteMapping("/{id}")
+	public String remover(@PathVariable Long id, RedirectAttributes attributes) {
+		sedes.remover(id);	
+		attributes.addFlashAttribute("msg_sucess", "Sede removido com sucesso.");
+		return "redirect:/sedes";
+	}	
+	
+	@GetMapping("/exibir/{id}")
 	public ModelAndView exibir(@PathVariable("id") long id) {
-		Sede sede = sedesService.findById(id);
-		ModelAndView view = new ModelAndView("views/sedes/exibir");
-		view.addObject("sede", sede);
-		return view;
-	}
+		Sede sede = sedes.buscaPorId(id);
+		ModelAndView modelAndView = new ModelAndView("views/sedes/exibir");
+		modelAndView.addObject("sede", sede);
+		return modelAndView;
+	}		
 }

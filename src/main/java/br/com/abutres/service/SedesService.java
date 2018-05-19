@@ -22,11 +22,11 @@ public class SedesService {
 		sedes.deleteById(id);
 	}
 	
-	public List<Sede> findAll() {
+	public List<Sede> listaTodos() {
 		return sedes.findAll();
 	}
 	
-	public Sede findById(long id) {
+	public Sede buscaPorId(long id) {
 		return sedes.getOne(id);
 	}
 }
