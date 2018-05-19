@@ -25,12 +25,15 @@
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Nome"
 							th:field="*{nome}" />
+						
+						<input type="hidden" th:field="*{id}"/>
+						
 						<button class="col s2 btn waves-effect waves-light" type="submit"
 							name="action">
-							 Salvar <i class="material-icons left">save</i>
+							 Salvar <i class="material-icons left ">save</i>
 						</button>
 						<div class="col s2 " layout:fragment="page_actions" id="page_actions">
-							<a th:href="@{/sedes}" class="waves-effect waves-light btn">Voltar <i class="material-icons left">replay</i></a>
+							<a th:href="@{/sedes}" class="btn">Voltar <i class="material-icons left">replay</i></a>
 						</div>
 					</div>
 				</form>
