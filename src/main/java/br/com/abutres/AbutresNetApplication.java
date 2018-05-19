@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 
+// Teste dessa porra!
 @SpringBootApplication
 @EnableAutoConfiguration
 public class AbutresNetApplication {
