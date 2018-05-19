@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.abutres.model.Cidade;
+import br.com.abutres.model.Estado;
 import br.com.abutres.model.Pais;
 import br.com.abutres.model.Sede;
+import br.com.abutres.service.CidadesService;
+import br.com.abutres.service.EstadosService;
 import br.com.abutres.service.PaisesService;
 import br.com.abutres.service.SedesService;
 
@@ -28,13 +32,29 @@ public class SedesController {
 	@Autowired
 	private SedesService sedes;
 	
+	@Autowired
+	private PaisesService paisesService;
 	
 	@Autowired
-	private PaisesService paises;
+	private EstadosService estadosService;
+	
+	@Autowired
+	private CidadesService cidadesService;
+	
 	
 	@ModelAttribute("listaTodosPaises")
 	public List<Pais> listaTodosPaises(){
-		return this.paises.listaTodos();
+		return this.paisesService.listaTodos();
+	}
+	
+	@ModelAttribute("listaTodosEstados")
+	public List<Estado> listaTodosEstados(){
+		return this.estadosService.listaTodos();
+	}
+	
+	@ModelAttribute("listaTodosCidades")
+	public List<Cidade> listaTodosCidades(){
+		return this.cidadesService.listaTodos();
 	}
 	
 	@GetMapping()
