@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layoutPadrao}">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-
 <title th:text="${status}"></title>
-
 </head>
-<body class="text-center">
-	<div>
-		<h1 class="h3 mb-3 font-weight-normal">
-			<i class="oi oi-warning"></i> 
-			<span th:text="${status}"></span>
-		</h1>
-		
-		<h2 th:text="${error}"></h2>
-		
+<body>
+	<div layout:fragment="page_content" id="page_content">
 		<div>
-			<span th:text="${message}"></span><br/><br/>
-			<a class="btn btn-primary" type="button" href="javascript:history.back()">Voltar a página anterior</a>
+			<h1 class="h3 mb-3 font-weight-normal">
+				<i class="oi oi-warning"></i> 
+				<span th:text="${status}"></span>
+			</h1>
+			
+			<h2 th:text="${error}"></h2>
+			
+			<div>
+				<span th:text="${message}"></span><br/><br/>
+				<a class="btn btn-primary" type="button" href="javascript:history.back()">Voltar a página anterior</a>
+			</div>
+		</div>
+		<div class="row center">	
+			<h3>Algo deu errado... </h3>			
+			<img class="responsive-img" th:src="@{/images/error404.jpg}">
 		</div>
 	</div>
 </body>
