@@ -1,6 +1,7 @@
 package br.com.abutres.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,10 @@ public class Sede implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
+	private String fotoLogoSede;
+	
+	private Date dataFundacao;
 	
 	@NotNull
 	@javax.validation.constraints.NotEmpty(message = "O campo nome não pode ser vazio!")
@@ -92,6 +97,22 @@ public class Sede implements Serializable {
 
 	public void setSedeMae(Sede sedeMae) {
 		this.sedeMae = sedeMae;
+	}
+
+	public String getFotoLogoSede() {
+		return fotoLogoSede;
+	}
+
+	public void setFotoLogoSede(String fotoLogoSede) {
+		this.fotoLogoSede = fotoLogoSede;
+	}
+
+	public Date getDataFundacao() {
+		return dataFundacao;
+	}
+
+	public void setDataFundacao(Date dataFundacao) {
+		this.dataFundacao = dataFundacao;
 	}
 
 }

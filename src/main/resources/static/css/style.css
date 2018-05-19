@@ -5,6 +5,31 @@
  *
  * Made By MaterializeCSS.com
  */
+ 
+ /* fallback */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/vendor/material-design-icons/MaterialIcons-Regular.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+ 
 .icon-block {
 	padding: 0 15px;
 }
@@ -108,34 +133,28 @@ table.striped>tbody>tr:nth-child(odd):hover{
 	display: inline-block;
 }
 
+.tabs .tab a {
+	color: rgba(50, 40, 41, 0.7);	
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+	color: #26a69a;
+}
+.table-of-contents a:hover {
+  border-left: 1px solid #26a69a;
+}
+
+.table-of-contents a.active {
+  border-left: 2px solid #26a69a;
+}
+
+.side-nav .collapsible-body > ul:not(.collapsible) > li.active,
+.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
+  background-color: #26a69a;
+}
+
+
 @media only screen and (min-width: 993px){
 	.container {
 	    width: 95%;
 	}
-}
-
-
-
-/* fallback */
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(/vendor/material-design-icons/MaterialIcons-Regular.woff2) format('woff2');
-}
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
 }

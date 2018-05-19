@@ -39,6 +39,7 @@
 	<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
 	<script th:src="@{/vendor/materialize/js/materialize.min.js}"></script>
 	<script th:src="@{/js/jquery.mask.min.js}"></script>
+	<script th:src="@{/js/mask.js}"></script>
 	<script type="text/javascript">
 		$(document).ready(function(e) {
 			$('.button-collapse').sideNav({
@@ -66,7 +67,7 @@
 			    close: 'Ok',
 			    closeOnSelect: false // Close upon selecting a date,
 			  });
-			
+			$('ul.tabs').tabs();			
 		});
 	</script>
 	<th:block layout:fragment="scripts"></th:block>

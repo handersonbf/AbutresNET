@@ -41,7 +41,7 @@ public class MembrosController {
 	@GetMapping("/adicionar")
 	public ModelAndView adicionar(Membro membro) {
 		ModelAndView modelAndView = new ModelAndView("views/membros/adicionar");
-		List<Sede> sedes = sedeService.findAll();
+		List<Sede> sedes = sedeService.listaTodos();
 		modelAndView.addObject(sedes);
 		modelAndView.addObject(membro);
 		return modelAndView;
@@ -79,7 +79,7 @@ public class MembrosController {
 	
 	@ModelAttribute("sedes")
 	public List<Sede> getSedes(){
-		return sedeService.findAll();
+		return sedeService.listaTodos();
 	}
 	
 }
