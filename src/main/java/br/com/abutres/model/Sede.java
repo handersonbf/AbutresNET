@@ -6,10 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Sede implements Serializable {
@@ -32,6 +29,8 @@ public class Sede implements Serializable {
 	private Membro subDiretor;
 	
 	private String endereco;
+	
+	private String telefone;
 	
 	private Sede sedeMae;
 
@@ -77,6 +76,14 @@ public class Sede implements Serializable {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public Sede getSedeMae() {

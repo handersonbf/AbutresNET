@@ -8,22 +8,20 @@
 </head>
 <body>
 	<div layout:fragment="page_content" id="page_content">
-		<div>
-			<h1 class="h3 mb-3 font-weight-normal">
-				<i class="oi oi-warning"></i> 
-				<span th:text="${status}"></span>
-			</h1>
-			
-			<h2 th:text="${error}"></h2>
-			
-			<div>
-				<span th:text="${message}"></span><br/><br/>
-				<a class="btn btn-primary" type="button" href="javascript:history.back()">Voltar a página anterior</a>
-			</div>
+		<div>			
+			<a class="btn btn-primary" type="button" href="javascript:history.back()">Voltar a página anterior</a>
 		</div>
-		<div class="row center">	
-			<h3>Algo deu errado... </h3>			
+		<div class="row center">
+			<h2>Algo deu errado....</h2>				
 			<img class="responsive-img" th:src="@{/images/error404.jpg}">
+		</div>
+		<div class="row">								
+			<h2 class="h3 mb-3 font-weight-normal">
+				 <i class="material-icons">error</i>  
+				<span th:text="${status}"></span>
+			</h2>			
+			<h2 th:text="${error}"></h2>	
+			<span th:text="${message}"></span><br/><br/>		
 		</div>
 	</div>
 </body>

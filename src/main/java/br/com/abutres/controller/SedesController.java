@@ -4,13 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.abutres.model.Pais;
 import br.com.abutres.model.Sede;
+import br.com.abutres.service.PaisesService;
 import br.com.abutres.service.SedesService;
 
 @Controller
@@ -19,6 +22,15 @@ public class SedesController {
 	
 	@Autowired
 	private SedesService sedesService;
+	
+	
+	@Autowired
+	private PaisesService paises;
+	
+	@ModelAttribute("listaTodosPaises")
+	public List<Pais> listaTodosPaises(){
+		return this.paises.listaTodos();
+	}
 	
 	@GetMapping
 	public String listar(ModelMap model) {
