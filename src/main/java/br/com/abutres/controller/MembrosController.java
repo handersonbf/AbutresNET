@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,6 +75,11 @@ public class MembrosController {
 		ModelAndView modelAndView = new ModelAndView("views/membros/exibir");
 		modelAndView.addObject("membro", membro);
 		return modelAndView;
-	}	
+	}
+	
+	@ModelAttribute("sedes")
+	public List<Sede> getSedes(){
+		return sedeService.findAll();
+	}
 	
 }
