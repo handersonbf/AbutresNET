@@ -69,7 +69,7 @@ body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
-    background-color: #eee;
+	background-color: #eee;
 }
 
 main {
@@ -153,6 +153,9 @@ table.striped>tbody>tr:nth-child(odd):hover{
   background-color: #26a69a;
 }
 
+.login-form {
+
+}
 
 @media only screen and (min-width: 993px){
 	.container {

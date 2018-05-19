@@ -20,25 +20,14 @@
 	media="screen,projection" />
 </head>
 <body>
-	<header th:replace="/fragments/header :: header"></header>
-	<main>
-		<aside th:replace="/fragments/sidenav :: sidenav"></aside>
-		<div class="container">		
-			<div layout:fragment="title"></div>
-			<div th:replace="/fragments/mensagemValidacao :: msg_sucess"></div>			
-			<div class="row">
-				<div class="col s12">
-					<div layout:fragment="page_actions"></div>
-					<div layout:fragment="page_content" class="card-panel hoverable"></div>
-				</div>
-			</div>
-		</div>
-	</main>
-	<footer th:replace="/fragments/footer :: footer"></footer>
+      <div class="container">
+     	<div layout:fragment="page_content"></div>
+      </div>
+
+	
 	<!--  Scripts-->
 	<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
 	<script th:src="@{/vendor/materialize/js/materialize.min.js}"></script>
-	<script th:src="@{/vendor/chart-js/Chart.min.js}"></script>
 	<script th:src="@{/js/jquery.mask.min.js}"></script>
 	<script th:src="@{/js/mask.js}"></script>
 	<script type="text/javascript">
