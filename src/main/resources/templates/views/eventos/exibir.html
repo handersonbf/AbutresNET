@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layoutPadrao}">
+<head>
+<title>Sedes</title>
+</head>
+<body>
+	<div layout:fragment="page_content" id="page_content">
+		<div th:each="sede : ${sede}">		
+			<div class="row">
+				<p>Nome: <span th:text=${sede.nome}></span></p>
+			</div>
+		</div>
+	</div>	
+	<div layout:fragment="page_actions" id="page_actions">
+		<a th:href="@{/sedes}" class="waves-effect waves-light btn"><i class="material-icons left">replay</i>Voltar</a>
+	</div>
+	<th:block layout:fragment="scripts">
+		<script type="text/javascript" th:src="@{js/materialize.js}"></script>
+	</th:block>
+</body>
+</html>

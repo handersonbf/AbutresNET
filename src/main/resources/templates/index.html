@@ -8,6 +8,34 @@
 </head>
 <body>
 	<div layout:fragment="page_content" id="page_content">
+	
+		<div class="row">
+		    <div class="col s12 m6">
+		      <div class="card grey lighten-2 darken-1">
+		        <div class="card-content white-text">
+		          <span class="card-title">Avisos!</span>
+		          <p>Aviso a nível mundial.</p>
+		        </div>
+		        <div class="card-action">
+		          <a href="#">Saiba mais...</a>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="col s12 m6">
+		      <div class="card grey lighten-5 darken-1">
+		        <div class="card-content white-text">
+		          <span class="card-title">Avisos!</span>
+		          <p>Aviso a nível mundial.</p>
+		        </div>
+		        <div class="card-action">
+		          <a href="#">Saiba mais...</a>
+		        </div>
+		      </div>
+		    </div>
+	  </div>
+  
+	
+           
 		<!--   Icon Section   -->
 		<div class="row">
 			<div class="col s12 m4">
@@ -16,12 +44,7 @@
 						<i class="material-icons">location_city</i>
 					</h2>
 					<h5 class="center">Novas Sedes</h5>
-
-					<p class="light">We did most of the heavy lifting for you to
-						provide a default stylings that incorporate our custom components.
-						Additionally, we refined animations and transitions to provide a
-						smoother experience for developers.</p>
-						<canvas id="charSedes" width="400" height="400"></canvas>
+					<canvas id="charSedes" width="400" height="400"></canvas>
 				</div>
 			</div>
 
@@ -30,14 +53,8 @@
 					<h2 class="center">
 						<i class="material-icons">group</i>
 					</h2>
-					<h5 class="center">Membros</h5>
-
-					<p class="light">By utilizing elements and principles of
-						Material Design, we were able to create a framework that
-						incorporates components and animations that provide more feedback
-						to users. Additionally, a single underlying responsive system
-						across all platforms allow for a more unified user experience.</p>
-						<canvas id="charMembros" width="400" height="400"></canvas>
+					<h5 class="center">Novos Membros</h5>
+					<canvas id="charMembros" width="400" height="400"></canvas>
 				</div>
 			</div>
 
@@ -47,22 +64,43 @@
 						<i class="material-icons">settings</i>
 					</h2>
 					<h5 class="center">Acessos</h5>
-
-					<p class="light">We have provided detailed documentation as
-						well as specific code examples to help new users get started. We
-						are also always open to feedback and can answer any questions a
-						user may have about Materialize.</p>
-						<canvas id="charAcessos" width="400" height="400"></canvas>
+					<canvas id="charAcessos" width="400" height="400"></canvas>
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col s12 m4">
+				<div class="icon-block">
+					<h2 class="center">
+						<i class="material-icons">event_available</i>
+					</h2>
+					<h5 class="center">Eventos do Mês</h5>
+					<canvas id="charEventos" width="400" height="400"></canvas>
+				</div>
+			</div>
+			
+			<div class="col s12 m4">
+				<div class="icon-block">
+					<h2 class="center">
+						<i class="material-icons">delete</i>
+					</h2>
+					<h5 class="center">Desistências</h5>
+					<canvas id="charDesistencia" width="400" height="400"></canvas>
+				</div>
+			</div>
+
+			
+		</div>
 	</div>
+	
 
 	<th:block layout:fragment="scripts">
 		<script>
 			var ctxSedes = document.getElementById("charSedes").getContext('2d');
 			var ctxMembros = document.getElementById("charMembros").getContext('2d');
 			var ctxAcessos = document.getElementById("charAcessos").getContext('2d');
+			var ctxEventos = document.getElementById("charEventos").getContext('2d');
+			var ctxDesistencia = document.getElementById("charDesistencia").getContext('2d');
 			var myChart = new Chart(ctxSedes, {
 			    type: 'bar',
 			    data: {
@@ -128,6 +166,42 @@
 				        	 'rgba(54, 162, 235, 0.2)'
 			            ]
 			        }]
+			    }
+			});
+			
+			var myChart04 = new Chart(ctxEventos, {
+			    type: 'pie',
+			    data: {
+			        labels: ['Fortaleza', 'São Paulo', 'Piauí', 'Amazonas'],
+			        datasets: [{
+			            label: '# de Acessos',
+			            data: [20, 10, 5, 4],
+				        backgroundColor: [
+				        	 'rgba(54, 162, 235, 0.2)'
+			            ]
+			        }]
+			    }
+			});
+			
+			var myChart05 = new Chart(ctxDesistencia, {
+				type: 'line',
+			    data: {
+			        labels: ["Ceará", "Rio Grande do Norte", "São Paulo", "Curitiba", "Amazonas"],
+			        datasets: [{
+			            label: '# de Membros',
+			            data: [40, 34, 10, 21, 61],
+			            
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
 			    }
 			});
 		</script>
