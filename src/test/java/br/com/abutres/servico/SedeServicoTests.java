@@ -26,18 +26,18 @@ public class SedeServicoTests {
 	public void teste() {
 		
 	}
-	
+/*	
 	private Membro membro() {
 		String nomeHanderson = "Handerson Frota";
 		String apelidoHanderson = "Ogro";
 		String telefoneHanderson = "9999999999";
-		String enderecoHanderson = "rua e tal";
+		//String enderecoHanderson = "rua e tal";
 		
 		return new Membro(nomeHanderson, 
 				apelidoHanderson, 
 				telefoneHanderson,  
 				new Date("10/10/2018"), 
-				new Date("10/10/2018"), 
-				enderecoHanderson);
+				new Date("10/10/2018"); 
 	}
+	*/
 }

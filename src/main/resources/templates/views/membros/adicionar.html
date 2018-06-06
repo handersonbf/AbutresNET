@@ -73,27 +73,36 @@
 						<div class="row">
 							<div class="input-field col s6">
 								<i class="material-icons prefix"></i>
-								<input id="cidade" type="text" class="validate" th:field="*{veiculo}"
+								<input id="cep" type="number" class="validate" th:field="*{endereco.cep}"
+									th:errorclass="invalid" /> 
+								<label for="cep">CEP</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<i class="material-icons prefix"></i>
+								<input id="cidade" type="text" class="validate" th:field="*{endereco.cidade}"
 									th:errorclass="invalid" /> 
 								<label for="cidade">Cidade</label>
 							</div>
 							<div class="input-field col s6">
 								<i class="material-icons prefix"></i>
-								<input id="uf" type="text" class="validate"
-									th:field="*{veiculo}" th:errorclass="invalid"> <label
-									for="uf">UF</label>
+		                        <select id="uf" class="form-control" th:field="*{endereco.uf}">
+		                            <option value="">Selecione a UF</option>
+		                            <option th:each="uf : ${ufs}" th:value="${uf}" th:text="${uf.sigla}"></option>
+		                        </select>
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="input-field col s6">
 								<i class="material-icons prefix"></i><input
-									id="logradouro" type="text" class="validate" th:field="*{veiculo}"
+									id="logradouro" type="text" class="validate" th:field="*{endereco.logradouro}"
 									th:errorclass="invalid"> <label for="logradouro">Logradouro</label>
 							</div>
 							<div class="input-field col s6">
 								<i class="material-icons prefix"></i>
-								<input id="numero" type="text" class="validate" th:field="*{veiculo}"
+								<input id="numero" type="text" class="validate" th:field="*{endereco.numero}"
 									th:errorclass="invalid" /> 
 								<label for="numero">Numero</label>
 							</div>
@@ -102,12 +111,12 @@
 						<div class="row">
 							<div class="input-field col s6">
 								<i class="material-icons prefix"></i><input
-									id="complemento" type="text" class="validate" th:field="*{veiculo}"
+									id="complemento" type="text" class="validate" th:field="*{endereco.complemento}"
 									th:errorclass="invalid"> <label for="complemento">Complemento</label>
 							</div>
 							<div class="input-field col s6">
 								<i class="material-icons prefix"></i>
-								<input id="bairro" type="text" class="validate" th:field="*{veiculo}"
+								<input id="bairro" type="text" class="validate" th:field="*{endereco.bairro}"
 									th:errorclass="invalid" /> 
 								<label for="bairro">Bairro</label>
 							</div>
@@ -141,7 +150,7 @@
 						<div class="input-field col s6">
 							<select id="sede" th:field="*{sede.nome}">
 								<option value="">Selecione a sede</option>
-								<option th:each="sede : ${sedes}" th:value="${sede}" th:text="${sede.nome}"></option>
+								<option th:each="sede : ${sedes}" th:value="${sede.id}" th:text="${sede.nome}"></option>
 							</select>
 							<label for="sede">Sede</label>
 						</div>
