@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.abutres.enums.EnumUf;
 import br.com.abutres.model.Membro;
 import br.com.abutres.model.Sede;
 import br.com.abutres.service.MembrosService;
@@ -80,6 +81,11 @@ public class MembrosController {
 	@ModelAttribute("sedes")
 	public List<Sede> getSedes(){
 		return sedeService.listaTodos();
+	}
+	
+	@ModelAttribute("ufs")
+	public EnumUf[] getUfs() {
+		return EnumUf.values();
 	}
 	
 }

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import br.com.abutres.model.Endereco;
 import br.com.abutres.model.Membro;
 import br.com.abutres.service.MembrosService;
 
@@ -25,22 +26,23 @@ public class MembroServicoTests {
 	
 	@Test
 	public void deveriaCadastrarUmMembro() {
-		membrosService.salvar(membro());
+		//membrosService.salvar(membro());
 		
 		Assert.assertEquals(1, membrosService.listaTodos().size());
 	}
 	
+	/*
 	private Membro membro() {
 		String nomeHanderson = "Handerson Frota";
 		String apelidoHanderson = "Ogro";
 		String telefoneHanderson = "9999999999";
-		String enderecoHanderson = "rua e tal";
+		//Endereco enderecoHanderson = "rua e tal";
 		
 		return new Membro(nomeHanderson, 
 				apelidoHanderson, 
 				telefoneHanderson,  
 				new Date("10/10/2018"), 
-				new Date("10/10/2018"), 
-				enderecoHanderson);
+				new Date("10/10/2018");
 	}
+	*/
 }

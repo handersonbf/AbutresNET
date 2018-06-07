@@ -3,13 +3,16 @@ package br.com.abutres.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,27 +26,13 @@ import org.springframework.format.annotation.NumberFormat;
 import br.com.abutres.enums.EnumStatus;
 
 @Entity
-@SequenceGenerator(name = "seq_membro", sequenceName = "seq_membro", initialValue = 1, allocationSize = 1)
 public class Membro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Membro() {
-		
-	}
-
-	public Membro(@NotBlank String nome, @NotBlank String apelido, @Size(min = 10, max = 10) String telefone,
-			Date dataNascimento, Date dataAdmissao, String endereco) {
-		super();
-		this.nome = nome;
-		this.apelido = apelido;
-		this.telefone = telefone;
-		this.dataNascimento = dataNascimento;
-		this.dataAdmissao = dataAdmissao;
-		this.endereco = endereco;
-	}
 
 	@Id
+	@SequenceGenerator(name = "seq_membro", sequenceName = "seq_membro", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_membro")
 	private Long id;
 
@@ -61,11 +50,11 @@ public class Membro implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_nascimento")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date dataNascimento;
 
 	@Column(name = "data_admissao")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date dataAdmissao;
 
 	@NumberFormat
@@ -73,7 +62,11 @@ public class Membro implements Serializable {
 
 	private String veiculo;
 
-	private String endereco;
+	@Embedded
+	private Endereco endereco;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Sede sede;
 
 	private String motoClubeItens;
 	private String advertencias;
@@ -82,14 +75,26 @@ public class Membro implements Serializable {
 	private String ocupacao;
 	private String padrinho;
 	private Patente patente;
-	private Sede sede;
-	private Cidade cidade;
-	private Estado estado;
+	//private Cidade cidade;
+	//private Estado estado;
 	
 	@Enumerated(EnumType.STRING)
 	private EnumStatus statusMembro;
 	
+	public Membro() {
+		
+	}
 	
+	public Membro(String nome, String apelido, @Size(min = 10, max = 10) String telefone,
+			Date dataNascimento, Date dataAdmissao, Endereco endereco) {
+		super();
+		this.nome = nome;
+		this.apelido = apelido;
+		this.telefone = telefone;
+		this.dataNascimento = dataNascimento;
+		this.dataAdmissao = dataAdmissao;
+		this.endereco = endereco;
+	}
 
 	public Long getId() {
 		return id;
@@ -158,17 +163,17 @@ public class Membro implements Serializable {
 	public String getVeiculo() {
 		return veiculo;
 	}
-
-	public void setVeiculo(String veiculo) {
-		this.veiculo = veiculo;
-	}
-
-	public String getEndereco() {
+	
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public void setVeiculo(String veiculo) {
+		this.veiculo = veiculo;
 	}
 
 	public String getMotoClubeItens() {
@@ -235,22 +240,6 @@ public class Membro implements Serializable {
 		this.sede = sede;
 	}
 
-	public Cidade getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
-	}
-
-	public Estado getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
 	public EnumStatus getStatusMembro() {
 		return statusMembro;
 	}
@@ -269,13 +258,11 @@ public class Membro implements Serializable {
 		int result = 1;
 		result = prime * result + ((advertencias == null) ? 0 : advertencias.hashCode());
 		result = prime * result + ((apelido == null) ? 0 : apelido.hashCode());
-		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((cnh == null) ? 0 : cnh.hashCode());
 		result = prime * result + ((dataAdmissao == null) ? 0 : dataAdmissao.hashCode());
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
-		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((foto == null) ? 0 : foto.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((motoClubeItens == null) ? 0 : motoClubeItens.hashCode());
@@ -310,11 +297,6 @@ public class Membro implements Serializable {
 				return false;
 		} else if (!apelido.equals(other.apelido))
 			return false;
-		if (cidade == null) {
-			if (other.cidade != null)
-				return false;
-		} else if (!cidade.equals(other.cidade))
-			return false;
 		if (cnh == null) {
 			if (other.cnh != null)
 				return false;
@@ -339,11 +321,6 @@ public class Membro implements Serializable {
 			if (other.endereco != null)
 				return false;
 		} else if (!endereco.equals(other.endereco))
-			return false;
-		if (estado == null) {
-			if (other.estado != null)
-				return false;
-		} else if (!estado.equals(other.estado))
 			return false;
 		if (foto == null) {
 			if (other.foto != null)

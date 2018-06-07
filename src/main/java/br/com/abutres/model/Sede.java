@@ -7,26 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Sede implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name = "seq_sede", sequenceName = "seq_sede", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_sede")
 	private Long id;
 	
 	private String fotoLogoSede;
 	
 	private Date dataFundacao;
 	
-	@NotNull
-	@javax.validation.constraints.NotEmpty(message = "O campo nome não pode ser vazio!")
 	private String nome;
 	
 	private Membro diretor;
@@ -114,5 +110,80 @@ public class Sede implements Serializable {
 	public void setDataFundacao(Date dataFundacao) {
 		this.dataFundacao = dataFundacao;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dataFundacao == null) ? 0 : dataFundacao.hashCode());
+		result = prime * result + ((diretor == null) ? 0 : diretor.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
+		result = prime * result + ((fotoLogoSede == null) ? 0 : fotoLogoSede.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((sedeMae == null) ? 0 : sedeMae.hashCode());
+		result = prime * result + ((subDiretor == null) ? 0 : subDiretor.hashCode());
+		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sede other = (Sede) obj;
+		if (dataFundacao == null) {
+			if (other.dataFundacao != null)
+				return false;
+		} else if (!dataFundacao.equals(other.dataFundacao))
+			return false;
+		if (diretor == null) {
+			if (other.diretor != null)
+				return false;
+		} else if (!diretor.equals(other.diretor))
+			return false;
+		if (endereco == null) {
+			if (other.endereco != null)
+				return false;
+		} else if (!endereco.equals(other.endereco))
+			return false;
+		if (fotoLogoSede == null) {
+			if (other.fotoLogoSede != null)
+				return false;
+		} else if (!fotoLogoSede.equals(other.fotoLogoSede))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (sedeMae == null) {
+			if (other.sedeMae != null)
+				return false;
+		} else if (!sedeMae.equals(other.sedeMae))
+			return false;
+		if (subDiretor == null) {
+			if (other.subDiretor != null)
+				return false;
+		} else if (!subDiretor.equals(other.subDiretor))
+			return false;
+		if (telefone == null) {
+			if (other.telefone != null)
+				return false;
+		} else if (!telefone.equals(other.telefone))
+			return false;
+		return true;
+	}
+	
+	
 
 }
