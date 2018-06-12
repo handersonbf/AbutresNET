@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Sede implements Serializable {
@@ -21,6 +25,8 @@ public class Sede implements Serializable {
 	
 	private String fotoLogoSede;
 	
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@Temporal(TemporalType.DATE)
 	private Date dataFundacao;
 	
 	private String nome;
@@ -29,7 +35,7 @@ public class Sede implements Serializable {
 	
 	private Membro subDiretor;
 	
-	private String endereco;
+	private Endereco endereco;
 	
 	private String telefone;
 	
@@ -71,11 +77,11 @@ public class Sede implements Serializable {
 		this.subDiretor = subDiretor;
 	}
 
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 
@@ -183,7 +189,5 @@ public class Sede implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 
 }

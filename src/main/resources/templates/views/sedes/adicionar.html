@@ -47,8 +47,8 @@
 					    </div>					    
 						<div class="row">
 							<div class="input-field col s2">
-								<input id="dataFundacao" type="text" class="datepicker" th:field="*{dataFundacao}">
-								<label for="dataFundacao" class="">Data de Fundação</label>
+								<input id="dataFundacao" type="date" class="datepicker" th:field="*{dataFundacao}">
+								<label for="dataFundacao" >Data de Fundação</label>
 							</div>
 						</div>								
 						<div class="row">
@@ -65,8 +65,8 @@
 						
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="endereco.logradouro" type="text" class="validate" th:field="*{endereco}">
-								<label for="endereco.logradouro">Logradouro</label>
+								<input id="logradouro" type="text" class="validate" th:field="*{endereco.logradouro}">
+								<label for="logradouro">Logradouro</label>
 							</div>
 						</div>					
 						<div class="row">
@@ -87,22 +87,22 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s2">
-								<input id="endereco.numero" type="text" class="validate" th:field="*{endereco}">
-								<label for="endereco.numero">Número</label>
+								<input id="numero" type="text" class="validate" th:field="*{endereco.numero}">
+								<label for="numero">Número</label>
 							</div>
 							<div class="input-field col s6">
-								<input id="endereco.complemento" type="text" class="validate" th:field="*{endereco}">
-								<label for="endereco.complemento">Complemento</label>
+								<input id="complemento" type="text" class="validate" th:field="*{endereco.complemento}">
+								<label for="complemento">Complemento</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s6">
-								<input id="endereco.bairro" type="text" class="validate" th:field="*{endereco}">
-								<label for="endereco.bairro">Bairro</label>
+								<input id="bairro" type="text" class="validate" th:field="*{endereco.bairro}">
+								<label for="bairro">Bairro</label>
 							</div>
 							<div class="input-field col s6">
-								<input id="endereco.cep" type="text" class="validate" th:field="*{endereco}">
-								<label for="endereco.cep">CEP</label>
+								<input id="cep" type="text" class="validate" th:field="*{endereco.cep}">
+								<label for="cep">CEP</label>
 							</div>
 						</div>
 					</div>

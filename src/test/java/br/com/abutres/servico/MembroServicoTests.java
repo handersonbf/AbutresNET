@@ -26,23 +26,20 @@ public class MembroServicoTests {
 	
 	@Test
 	public void deveriaCadastrarUmMembro() {
-		//membrosService.salvar(membro());
+		membrosService.salvar(membro());
 		
 		Assert.assertEquals(1, membrosService.listaTodos().size());
 	}
 	
-	/*
 	private Membro membro() {
 		String nomeHanderson = "Handerson Frota";
 		String apelidoHanderson = "Ogro";
 		String telefoneHanderson = "9999999999";
-		//Endereco enderecoHanderson = "rua e tal";
 		
 		return new Membro(nomeHanderson, 
 				apelidoHanderson, 
 				telefoneHanderson,  
 				new Date("10/10/2018"), 
-				new Date("10/10/2018");
+				new Date("10/10/2018"));
 	}
-	*/
 }

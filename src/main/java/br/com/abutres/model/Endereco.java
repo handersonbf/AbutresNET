@@ -25,7 +25,7 @@ public class Endereco implements Serializable{
 	
 	@NotBlank
 	@Size(min = 3, max = 255)
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String cidade;
 	
 	@Enumerated(EnumType.STRING)
