@@ -33,8 +33,8 @@
 									method="POST"
 									th:onsubmit="'return confirm(\'Posso remover ' + ${membro.nome} + '?\');'">
 									<input type="hidden" name="_method" value="DELETE" />
-									<button class="btn-floating btn-small waves-effect waves-light" type="submit" name="remover">
-										<i class="material-icons right">delete_forever</i>
+									<button class="btn-floating btn-small waves-effect waves-light red darken-2" type="submit" name="remover">
+										<i class="material-icons right">delete</i>
 									</button>
 								</form>
 							</td>

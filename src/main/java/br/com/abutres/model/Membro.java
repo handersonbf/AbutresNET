@@ -30,7 +30,6 @@ public class Membro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-
 	@Id
 	@SequenceGenerator(name = "seq_membro", sequenceName = "seq_membro", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_membro")
@@ -50,11 +49,12 @@ public class Membro implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_nascimento")
-	@DateTimeFormat(pattern = "MM/dd/yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date dataNascimento;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "data_admissao")
-	@DateTimeFormat(pattern = "MM/dd/yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date dataAdmissao;
 
 	@NumberFormat
@@ -75,8 +75,6 @@ public class Membro implements Serializable {
 	private String ocupacao;
 	private String padrinho;
 	private Patente patente;
-	//private Cidade cidade;
-	//private Estado estado;
 	
 	@Enumerated(EnumType.STRING)
 	private EnumStatus statusMembro;
@@ -86,14 +84,13 @@ public class Membro implements Serializable {
 	}
 	
 	public Membro(String nome, String apelido, @Size(min = 10, max = 10) String telefone,
-			Date dataNascimento, Date dataAdmissao, Endereco endereco) {
+			Date dataNascimento, Date dataAdmissao) {
 		super();
 		this.nome = nome;
 		this.apelido = apelido;
 		this.telefone = telefone;
 		this.dataNascimento = dataNascimento;
 		this.dataAdmissao = dataAdmissao;
-		this.endereco = endereco;
 	}
 
 	public Long getId() {
@@ -241,6 +238,9 @@ public class Membro implements Serializable {
 	}
 
 	public EnumStatus getStatusMembro() {
+		if(statusMembro == null) {
+			statusMembro = EnumStatus.ATIVO;
+		}
 		return statusMembro;
 	}
 

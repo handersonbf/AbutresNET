@@ -15,4 +15,5 @@ public enum EnumStatus {
 	public String getDescricao() {
 		return descricao;
 	}
+	
 }
